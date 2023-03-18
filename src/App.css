@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  background-image: url("/src/assets/Background.png")
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
