@@ -98,6 +98,31 @@
                     }]
                 }
             ]
-        }]
+        }], "teams":[
+            {
+                "id": 1,
+                "name": "Team Turkiye",
+                "owner": 1,
+                "players": [{
+                    "id": 1,
+                "name": "Bent",
+                "gamerTag": "Bensoiur",
+                "email": "Ben4000@gmail.com",
+                "phone": 30201040
+                }]
+            },
+            {
+                "id": 2,
+                "name": "Team USA",
+                "owner": 2,
+                "players": [{
+                    "id": 2,
+                "name": "James",
+                "gamerTag": "JamieBear",
+                "email": "Jammy@gmail.com",
+                "phone": 60504030
+                }]
+            }
+        ]
     }]
 }

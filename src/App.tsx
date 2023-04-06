@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import Header from './components/header'
 import { BrowserRouter, Routes, Route, RouterProvider } from 'react-router-dom'
-
-
-
-
-import './App.css'
+import './styles/App.css'
+import DisplayTeams from './components/team/DisplayTeams'
+import DisplayTournament from './components/tournament/DisplayTournament'
 
 function App() {
 
@@ -15,9 +13,10 @@ function App() {
       <BrowserRouter basename=''>
       <Header />
       <Routes>
+      <Route path="/teams" element={<DisplayTeams />} />
+      <Route path="/tournament" element={<DisplayTournament />} />
+
       </Routes>
-    
-    <h1>Front page</h1>
       </BrowserRouter>
 
     </div>

@@ -1,4 +1,9 @@
 body {
   background: url("/src/assets/Background.png") no-repeat center fixed;   
   background-size: cover;
+  color: aliceblue;
+}
+
+table, th, td {
+  border: 1px solid;
 }
