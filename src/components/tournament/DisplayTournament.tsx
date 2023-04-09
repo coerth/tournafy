@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ApiGet } from '../../utility/ApiFetcher'
 import {Tournament} from '../../utility/types'
-import ObjectID from "bson-objectid"
-
 
 
 const DisplayTournament = () => {
