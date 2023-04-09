@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {Player} from '../../utility/types'
-import '../../styles/App.css'
 
 type Props = {
     players: Player[]

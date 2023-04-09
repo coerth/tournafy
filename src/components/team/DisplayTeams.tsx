@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ApiGet } from '../../utility/ApiFetcher'
 import {Team, Player} from '../../utility/types'
-import '../../styles/App.css'
 import DisplayTeam from './DisplayTeam'
 
 
