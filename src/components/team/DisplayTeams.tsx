@@ -7,15 +7,15 @@ import DisplayTeam from './DisplayTeam'
 const DisplayTeams = () => {
 
     const [teams, setTeams] = useState<Team[]>([])
-    const [team, setTeam] = useState<Team>({id: 0, name: "", owner: 0, players: new Array<Player>()})
+    const [team, setTeam] = useState<Team>({name: "", owner: 0, players: new Array<Player>()})
     const [showTeam, setShowTeam] = useState(false)
 
     useEffect(() => {
         ApiGet('team', setTeams)
     }, [])
 
-    function seeTeam(id : number) {
-        let index = teams.findIndex((team) => team.id === id)
+    function seeTeam(id : string) {
+        let index = teams.findIndex((team) => team.id?.id === id)
         setTeam(teams[index])
         setShowTeam(!showTeam)
     }
@@ -35,12 +35,12 @@ const DisplayTeams = () => {
             <tbody>
             {teams?.map( (team) => {
         return(
-            <tr key={team.id}>
-              <td>{team.id}</td>
+            <tr key={team.id?.id}>
+              <td>{team.id?.id}</td>
               <td>{team.name}</td>
               <td>{team.owner}</td>
               <td>{team.players.length}</td>
-              <td><button onClick={() => seeTeam(team.id)}>See Team</button></td>
+              <td><button onClick={() => seeTeam(team.id? team.id.id : "-1")}>See Team</button></td>
             </tr>
         )
       } )}

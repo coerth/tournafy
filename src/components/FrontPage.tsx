@@ -5,6 +5,7 @@ const FrontPage = () => {
     <div>
         <div className='frontpage-top-div'>
         <h1 className='frontpage-headline'>Tournafy</h1>
+        <p>Your go-to place for quality tournament running!</p>
         <div className='frontpage-menu'>
         <section >
           <h3>Tournaments</h3>

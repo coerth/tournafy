@@ -1,12 +1,14 @@
+import ObjectID from "bson-objectid"
+
 export type Team =  {
-    id: number,
+    id?: ObjectID,
     name: string,
     owner: number,
     players: Player[]
 }
 
 export type Player = {
-    id?: number,
+    id?: ObjectID,
     name: string,
     gamerTag: string,
     email: string,
@@ -14,7 +16,7 @@ export type Player = {
 }
 
 export type Match = {
-    id?: number,
+    id?: ObjectID,
     location: string,
     date: string,
     winner: number,
@@ -24,7 +26,7 @@ export type Match = {
 }
 
 export type Tournament = {
-    id?: number,
+    id?: ObjectID,
     startDate: string,
     endDate: string,
     gameType: string,

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ApiGet } from '../../utility/ApiFetcher'
 import {Tournament} from '../../utility/types'
+import ObjectID from "bson-objectid"
+
 
 
 const DisplayTournament = () => {
@@ -27,8 +29,8 @@ const DisplayTournament = () => {
             <tbody>
             {tournaments?.map( (tournament) => {
         return(
-            <tr key={tournament.id}>
-              <td>{tournament.id}</td>
+            <tr key={tournament.id?.id}>
+              <td>{tournament.id?.id}</td>
               <td>{tournament.startDate}</td>
               <td>{tournament.endDate}</td>
               <td>{tournament.gameType}</td>

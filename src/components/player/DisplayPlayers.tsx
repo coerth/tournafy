@@ -25,8 +25,8 @@ const DisplayPlayers:React.FC<Props> = ({players}): JSX.Element => {
             <tbody>
             {players?.map( (player) => {
         return(
-            <tr key={player.id}>
-              <td>{player.id}</td>
+            <tr key={player.id?.id}>
+              <td>{player.id?.id}</td>
               <td>{player.name}</td>
               <td>{player.gamerTag}</td>
             </tr>
