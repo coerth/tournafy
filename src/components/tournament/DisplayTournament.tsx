@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { ApiGet } from '../../utility/ApiFetcher'
 import {Tournament} from '../../utility/types'
 
 
 const DisplayTournament = () => {
 
+    const ApiGet = async (setState : Function) => {
+        try {
+          const data = await fetch("http://localhost:3000/api/v1/tournament")
+          const json = await data.json()
+          
+          setState(json.tournaments)    
+        } 
+        catch (error) {
+          console.error(error)
+        }
+      }
+
     const [tournaments, setTournaments] = useState<Tournament[]>([])
     
     useEffect(() => {
-        ApiGet('tournament', setTournaments)
+        ApiGet(setTournaments)
     }, [])
 
 
@@ -27,8 +38,8 @@ const DisplayTournament = () => {
             <tbody>
             {tournaments?.map( (tournament) => {
         return(
-            <tr key={tournament.id?.id}>
-              <td>{tournament.id?.id}</td>
+            <tr key={tournament._id}>
+              <td>{tournament._id}</td>
               <td>{tournament.startDate}</td>
               <td>{tournament.endDate}</td>
               <td>{tournament.gameType}</td>

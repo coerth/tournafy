@@ -1,4 +1,4 @@
-const api = "http://localhost:3008/"
+const api = "http://localhost:3000/api/v1/"
 
 export const ApiGet = async (endpoint : string, setState : Function) => {
   try {

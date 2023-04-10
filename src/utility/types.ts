@@ -1,32 +1,37 @@
 import ObjectID from "bson-objectid"
 
 export type Team =  {
-    id?: ObjectID,
+    _id: string,
     name: string,
-    owner: number,
-    players: Player[]
+    captain: string,
+    players: Player[],
+    slug?: string,
+    __v?: number,
+    id?: string
 }
 
 export type Player = {
-    id?: ObjectID,
+    _id: string,
     name: string,
     gamerTag: string,
     email: string,
-    phone: number
+    phone: number,
+    __v: number
 }
 
 export type Match = {
-    id?: ObjectID,
+    _id: string,
     location: string,
     date: string,
     winner: number,
     score: number[],
     stage: number,
-    teams: Team[]
+    teams: Team[],
+    __v: number
 }
 
 export type Tournament = {
-    id?: ObjectID,
+    _id: string,
     startDate: string,
     endDate: string,
     gameType: string,
@@ -34,6 +39,7 @@ export type Tournament = {
     maxTeams: number,
     minTeams: number,
     matches: Match[],
-    teams: Team[]
+    teams: Team[],
+    __v: number
 }
 
