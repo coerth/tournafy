@@ -1,41 +1,37 @@
 import React, { useEffect, useState } from 'react'
-import {Player} from '../../utility/types'
+import {GET_PLAYERS} from '../../../graphql/query'
+import { useQuery} from '@apollo/client';
+import {Player} from '../../types/types'
 
-type Props = {
-    players: Player[]
-}
-
-const DisplayPlayers:React.FC<Props> = ({players}): JSX.Element => {
+const DisplayPlayers = ({players}: {players: Player[]}) => {
     
-    useEffect(() => { 
-    }, [])
-
-
+  
     return (
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Gamer Tag</th>
-
-                </tr>
-            </thead>
-            <tbody>
-            {players?.map( (player) => {
-        return(
-            <tr key={player._id}>
-              <td>{player._id}</td>
-              <td>{player.name}</td>
-              <td>{player.gamerTag}</td>
-            </tr>
-        )
-      } )}
-            </tbody>
-        </table>
-    </div>
-  )
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Gamer Tag</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+            {players?.map((players: Player) => (
+                    <tr key={players._id}>
+                        <td>{players._id}</td>
+                        <td>{players.name}</td>
+                        <td>{players.gamerTag}</td>
+                        <td>{players?.email}</td>
+                        <td>{players?.phone}</td>
+                    </tr>
+            ))}
+                </tbody>
+            </table>
+        </div>
+   )
 }
 
 export default DisplayPlayers

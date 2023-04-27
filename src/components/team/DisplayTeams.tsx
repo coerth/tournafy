@@ -1,60 +1,47 @@
-import React, { useEffect, useState } from 'react'
-import {Team, Player} from '../../utility/types'
+import { useState } from 'react'
+import {Team, Player} from '../../types/types'
 import DisplayTeam from './DisplayTeam'
-
+import {GET_TEAMS} from '../../../graphql/query'
+import { useQuery} from '@apollo/client';
 
 const DisplayTeams = () => {
 
-    const ApiGet = async (setState : Function) => {
-        try {
-          const data = await fetch("http://localhost:3000/api/v1/team")
-          const json = await data.json()
-
-          setState(json.teams)    
-        } 
-        catch (error) {
-          console.error(error)
-        }
-      }
-
-    const [teams, setTeams] = useState<Team[]>([])
-    const [team, setTeam] = useState<Team>({_id: "-1",name: "", captain: "0", players: new Array<Player>()})
-    const [showTeam, setShowTeam] = useState(false)
-
-    useEffect(() => {
-        ApiGet(setTeams)
-    }, [])
-
-    function seeTeam(id: string) {
-        let index = teams.findIndex((team) => team._id === id)
-        setTeam(teams[index])
-        setShowTeam(!showTeam)
-    }
+  const { loading, error, data } = useQuery(GET_TEAMS);
+  
+  const [team, setTeam] = useState<Team>({_id: "-1",name: "", captain: {name: ""}, players: new Array<Player>()})
+  const [showTeam, setShowTeam] = useState(false)
+  
+  function seeTeam(id: string) {
+    let index = data.teams?.findIndex((team: Team) => team._id === id)
+    setTeam(data.teams[index])
+    setShowTeam(!showTeam)
+  }
+  
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error : {error.message}</p>; 
 
     return (
     <div>
-    {!showTeam && 
+    {!showTeam &&
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Owner</th>
+                    <th>Captain</th>
                     <th>Players</th>
                 </tr>
             </thead>
             <tbody>
-            {teams?.map( (team) => {
-        return(
+            {data.teams.map( (team:Team ) => (
             <tr key={team._id}>
               <td>{team._id}</td>
               <td>{team.name}</td>
-              <td>{team.captain}</td>
-              <td>{team.players.length}</td>
-              <td><button onClick={() => seeTeam(team._id)}>See Team</button></td>
+              <td>{team.captain.name}</td>
+              <td>{team.players?.length}</td>
+              <td><button onClick={() => seeTeam(team._id? team._id : "")}>See Team</button></td>
             </tr>
-        )
-      } )}
+        ))}
             </tbody>
         </table>
 }
