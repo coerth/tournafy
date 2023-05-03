@@ -1,4 +1,4 @@
-import ObjectID from "bson-objectid"
+/* import ObjectID from "bson-objectid"
 
 export type Team =  {
     _id: string,
@@ -43,3 +43,4 @@ export type Tournament = {
     __v: number
 }
 
+ */

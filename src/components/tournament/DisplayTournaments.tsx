@@ -3,9 +3,12 @@ import {Tournament, Match, Team, Player} from '../../types/types'
 import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { useQuery} from '@apollo/client';
 import DisplayTournament from './DisplayTournament';
+import { useNavigate } from 'react-router-dom'
+
 
 
 const DisplayTournaments = () => {
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_TOURNAMENTS);
 
@@ -24,6 +27,7 @@ const DisplayTournaments = () => {
     return (
     <div>
       {!showTournament &&
+      <div>
         <table>
             <thead>
                 <tr>
@@ -50,6 +54,9 @@ const DisplayTournaments = () => {
       } )}
             </tbody>
         </table>
+        <button onClick={()=>navigate(-1)}>Return</button>
+
+        </div>
 }
 
 {showTournament &&

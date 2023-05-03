@@ -3,6 +3,7 @@ import '../../styles/App.css'
 import {Tournament} from '../../types/types'
 import DisplayTournaments from '../tournament/DisplayTournaments'
 
+
 type Props = {
     tournament: Tournament
     setShowTournament: Function

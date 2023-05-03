@@ -3,12 +3,16 @@ import {Team, Player} from '../../types/types'
 import DisplayTeam from './DisplayTeam'
 import {GET_TEAMS} from '../../../graphql/query'
 import { useQuery} from '@apollo/client';
+import { teamInitialState } from '../../types/initialState';
+import { useNavigate } from 'react-router-dom'
+
 
 const DisplayTeams = () => {
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_TEAMS);
   
-  const [team, setTeam] = useState<Team>({_id: "-1",name: "", captain: {name: ""}, players: new Array<Player>()})
+  const [team, setTeam] = useState<Team>(teamInitialState)
   const [showTeam, setShowTeam] = useState(false)
   
   function seeTeam(id: string) {
@@ -23,6 +27,7 @@ const DisplayTeams = () => {
     return (
     <div>
     {!showTeam &&
+    <div>
         <table>
             <thead>
                 <tr>
@@ -44,12 +49,17 @@ const DisplayTeams = () => {
         ))}
             </tbody>
         </table>
+        <button onClick={()=>navigate(-1)}>Return</button>
+        
+        </div>
 }
 
 {showTeam && 
 <DisplayTeam team={team} setShowTeam={setShowTeam}/>
 }
     </div>
+  
+  
   )
 }
 

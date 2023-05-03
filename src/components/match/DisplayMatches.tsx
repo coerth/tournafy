@@ -3,8 +3,11 @@ import {Match, Team, Player} from '../../types/types'
 import DisplayMatch from './DisplayMatch'
 import {GET_MATCHES} from '../../../graphql/query'
 import { useQuery} from '@apollo/client';
+import { useNavigate } from 'react-router-dom'
+
 
 const DisplayMatches = () => {
+  const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_MATCHES);
   
@@ -23,6 +26,7 @@ const DisplayMatches = () => {
     return (
     <div>
     {!showMatch &&
+    <div>
         <table>
             <thead>
                 <tr>
@@ -42,6 +46,9 @@ const DisplayMatches = () => {
         ))}
             </tbody>
         </table>
+        <button onClick={()=>navigate(-1)}>Return</button>
+
+        </div>
 }
 
 {showMatch && 

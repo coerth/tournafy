@@ -7,6 +7,8 @@ import DisplayTournament from './components/tournament/DisplayTournaments'
 import FrontPage from './components/FrontPage'
 import DisplayPlayers from './components/player/DisplayPlayers'
 import DisplayMatches from './components/match/DisplayMatches'
+import AddPlayer from './components/player/AddPlayer'
+import AddTeam from './components/team/AddTeam'
 
 
 

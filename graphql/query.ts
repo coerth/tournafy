@@ -25,8 +25,11 @@ query GetTeams {
       name
     }
     players {
+      _id
       gamerTag
       name
+      email
+      phone
     }
   }
 }
