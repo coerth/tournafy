@@ -59,6 +59,7 @@ query GetTeams {
     
     query GetTournaments {
       tournaments {
+        name
         endDate
         _id
         matches {

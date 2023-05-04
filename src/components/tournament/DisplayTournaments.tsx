@@ -4,6 +4,7 @@ import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { useQuery} from '@apollo/client';
 import DisplayTournament from './DisplayTournament';
 import { useNavigate } from 'react-router-dom'
+import { tournamentInitialState } from '../../types/initialState';
 
 
 
@@ -12,7 +13,7 @@ const DisplayTournaments = () => {
 
   const { loading, error, data } = useQuery(GET_TOURNAMENTS);
 
-  const [tournament, setTournament] = useState<Tournament>({_id: "-1", startDate: "", endDate: "", matches: new Array<Match>(),  teams: new Array<Team>()});
+  const [tournament, setTournament] = useState<Tournament>(tournamentInitialState);
   const [showTournament, setShowTournament] = useState(false)
 
   function seeTournament(id: string) {
@@ -32,6 +33,7 @@ const DisplayTournaments = () => {
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Name</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     {/* <th>Game Type</th> */}
@@ -43,6 +45,7 @@ const DisplayTournaments = () => {
         return(
             <tr key={tournament._id}>
               <td>{tournament._id}</td>
+              <td>{tournament.name}</td>
               <td>{tournament.startDate}</td>
               <td>{tournament.endDate}</td>
               {/* <td>{tournament.gameType}</td> */}

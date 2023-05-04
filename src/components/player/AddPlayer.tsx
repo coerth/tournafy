@@ -22,6 +22,7 @@ const AddPlayer = () => {
   return (
     <div>
         <form onSubmit={createNewPlayer}>
+          <h1>Add Player</h1>
         <br/>
         <label>
         <input required type="text" name="name" placeholder='name' value={player.name} onChange={(evt)=>{setPlayer({...player, name:evt.target.value})}}/>
@@ -37,7 +38,8 @@ const AddPlayer = () => {
         <br/>
         <label>
         <input type="number" name="phone" placeholder='phone' value={player.phone} onChange={(evt)=>{setPlayer({...player, phone: parseInt(evt.target.value) })}}/>
-        </label>player
+        </label>
+        <br />
         <input type="submit" value="Add new Player" />
     </form>
     </div>

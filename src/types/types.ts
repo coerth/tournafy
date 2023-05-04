@@ -24,13 +24,14 @@ export type Match = {
 
 export type Tournament = {
     _id?: string,
-    startDate: string,
-    endDate: string,
+    name: string,
+    startDate?: string,
+    endDate?: string,
     tournamentType?: string,
-    maxTeams?: number,
-    minTeams?: number,
-    matches: Match[],
-    teams: Team[]
+    maxTeams: number,
+    minTeams: number,
+    matches?: Match[],
+    teams?: Team[]
 }
 
 

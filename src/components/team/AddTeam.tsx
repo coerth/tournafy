@@ -22,6 +22,7 @@ const AddTeam = () => {
   return (
     <div>
         <form onSubmit={createNewTeam}>
+          <h1>Add Team</h1>
         <br/>
         <label>
         <input required type="text" name="name" placeholder='name' value={team.name} onChange={(evt)=>{setTeam({...team, name:evt.target.value})}}/>

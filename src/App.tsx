@@ -9,6 +9,8 @@ import DisplayPlayers from './components/player/DisplayPlayers'
 import DisplayMatches from './components/match/DisplayMatches'
 import AddPlayer from './components/player/AddPlayer'
 import AddTeam from './components/team/AddTeam'
+import AddTournament from './components/tournament/AddTournament'
+import Adminpage from './components/admin/Adminpage'
 
 
 
@@ -25,6 +27,7 @@ function App() {
       <Route path="/team" element={<DisplayTeams />} />
       <Route path="/tournament" element={<DisplayTournament />} />
       <Route path="/match" element={<DisplayMatches />} />
+      <Route path="/admin" element={<Adminpage/>}/>
       </Routes>
       </BrowserRouter>
 

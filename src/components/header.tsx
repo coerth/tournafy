@@ -16,6 +16,7 @@ const Header = () => {
                 <NavLink to="/game">Games</NavLink>
                 <NavLink to="/match">Match</NavLink>
                 <NavLink to="/team">Team</NavLink>
+                <NavLink to="/admin">Admin</NavLink>
               </div>
             </div>
           </nav>

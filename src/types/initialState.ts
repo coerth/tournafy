@@ -25,8 +25,17 @@ export const matchInitialState: Match = {
 }
 
 export const tournamentInitialState: Tournament = {
+    name: "default",
     startDate: "default",
     endDate: "default",
+    maxTeams: 0,
+    minTeams: 0,
     matches: [matchInitialState],
-    teams: [teamInitialState]
+    teams: [teamInitialState],
+}
+
+export const tournamentInputInitialState: Tournament = {
+    name: "default",
+    maxTeams: 0,
+    minTeams: 0
 }
