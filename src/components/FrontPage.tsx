@@ -1,10 +1,16 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+//import Modal from './modal/modal';
+//import useModal from '../hooks/useModal';
+
 
 const FrontPage = () => {
+  //const { isOpen, toggle } = useModal();
+
   const navigate = useNavigate();
 
   return (
+    <>
     <div>
         <div className='frontpage-top-div'>
         <h1 className='frontpage-headline'>Tournafy</h1>
@@ -30,8 +36,16 @@ const FrontPage = () => {
         <button onClick={()=>navigate("/team")}>Go to Teams</button>
         </section>
         </div>
+        <div className='frontpage-menu'>
+        <section >
+        <h3>Modal Test</h3>
+        <p>See Modal</p>
+        </section>
+        </div>
+        </div>
+      
       </div>
-    </div>
+      </>
   )
 
   function goToTournaments() {
