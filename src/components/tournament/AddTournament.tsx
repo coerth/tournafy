@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { tournamentInputInitialState } from '../../types/initialState';
-import { CREATE_TOURNAMENT } from '../../../graphql/mutation';
+import { CREATE_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation';
 import {useMutation } from '@apollo/client';
 import { GET_TOURNAMENTS } from '../../../graphql/query';
 
