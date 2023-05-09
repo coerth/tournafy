@@ -3,6 +3,7 @@ import { logInInitialState } from "../../types/initialState";
 import { useMutation } from "@apollo/client";
 import { LOG_IN } from "../../../graphql/mutations/logInMutation";
 import { log } from "console";
+import { loggedInPlayerVar } from "../../client/cache";
 
 const LogIn = () => {
   const [logIn, setLogIn] = useState(logInInitialState);
@@ -12,7 +13,12 @@ const LogIn = () => {
   }); //mutateFunction is the function to call for server update. refetchQueries is the list of queries to refetch after the mutation is done. And if they were used with useQuery, they will be updated with the new data.
   if (loading) return <>'Submitting...'</>;
   if (error) return <>`Submission error! ${error.message}`</>;
-  if (data) console.log(data.sign_in.player);
+  if (data && data != undefined)
+  {
+    localStorage.setItem("auth:token", data.sign_in.token);
+    loggedInPlayerVar(data.sign_in.player)
+  } 
+    
 
   const signIn = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

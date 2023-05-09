@@ -92,3 +92,16 @@ query GetTeams {
     }
     
       `
+
+    export  const IS_LOGGED_IN = gql`
+  query IsUserLoggedIn {
+    isLoggedIn @client
+  }
+`;
+
+export const LOGGED_IN_PLAYER = gql `
+  query LoggedInPlayer
+  {
+    loggedInPlayer @client
+  }
+`
