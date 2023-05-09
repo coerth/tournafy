@@ -2,9 +2,19 @@ import React, { useState } from "react";
 import { logInInitialState } from "../../types/initialState";
 import { useMutation } from "@apollo/client";
 import { LOG_IN } from "../../../graphql/mutations/logInMutation";
-import { log } from "console";
+import { useNavigate } from "react-router-dom";
+import Modal from '../Modal'
+import useModal from '../hooks/useModal'
+import SignUp from "./SignUp";
+import '../../styles/Modal.css'
+
+
 
 const LogIn = () => {
+  const { isOpen, toggle } = useModal();
+
+  const navigate = useNavigate();
+  
   const [logIn, setLogIn] = useState(logInInitialState);
 
   const [mutateFunction, { data, loading, error }] = useMutation(LOG_IN, {
@@ -20,33 +30,34 @@ const LogIn = () => {
   };
 
   return (
-    <div>
+    <>
+    <div className="login-container">
       <form onSubmit={signIn}>
-   
-          <label >Email: </label>
           <input
             type="text"
             name="email"
+            placeholder="Email"
             value={logIn.email}
             onChange={(evt) => {
               setLogIn({ ...logIn, email: evt.target.value });
             }}
           />
      
-          <label>Password: </label>
           <input
             type="text"
             name="password"
+            placeholder="Password"
             value={logIn.password}
             onChange={(evt) => {
               setLogIn({ ...logIn, password: evt.target.value });
             }}
           />
-      <button type="submit" value="Log In">
-          Log In
-        </button>
+        <button type="submit" value="Log In">Log In</button>
       </form>
+          <button onClick={toggle}>Sign Up</button>
+          <Modal isOpen={isOpen} toggle={toggle} children={<SignUp/>} />
     </div>
+    </>
   );
 };
 

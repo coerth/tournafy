@@ -41,16 +41,16 @@ export const tournamentInputInitialState: Tournament = {
 }
 
 export const signUpInitialState: SignUp = {
-    name: "default",
-    email: "default",
-    password: "defaul",
-    confirmPassword: "default",
-    gamerTag: "default",
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    gamerTag: "",
     phone: 0
 
 }
 
 export const logInInitialState: LogIn = {
-    email: "default",
-    password: "default"
+    email: "",
+    password: ""
 }

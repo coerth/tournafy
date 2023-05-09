@@ -18,7 +18,6 @@ const Header = () => {
                 <NavLink to="/match">Match</NavLink>
                 <NavLink to="/team">Team</NavLink>
                 <NavLink to="/admin">Admin</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
                 <LogIn/>
               </div>
             </div>

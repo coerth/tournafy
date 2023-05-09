@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { signUpInitialState } from "../../types/initialState";
 import {useMutation } from '@apollo/client';
 import { SIGN_UP } from "../../../graphql/mutations/signUpMutation";
+import '../../styles/SignUp.css'
 
 const SignUp = () => {
   const [user, setUser] = useState(signUpInitialState);
@@ -21,17 +22,18 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={signUp}>
-        <h1>Sign Up</h1>
-        <br />
-        <div>
-          <label>Fullname</label>
-          <br />
+    <div className="sign-up-form">
+      <form className="form" onSubmit={signUp}>
+        <h1 className="signup-h1">Sign Up</h1>
+       
+        <div className="inputContainer">
+          <label className="label">Fullname</label>
+      
           <input
             required
             type="text"
             name="name"
+            className="input"
             value={user.name}
             placeholder="Fullname"
             onChange={(evt) => {
@@ -39,14 +41,15 @@ const SignUp = () => {
             }}
           />
         </div>
-        <br />
-        <div>
-          <label>Email</label>
-          <br />
+     
+        <div className="inputContainer">
+          <label className="label">Email</label>
+        
           <input
             required
             type="text"
             name="email"
+            className="input"
             value={user.email}
             placeholder="Email"
             onChange={(evt) => {
@@ -54,14 +57,15 @@ const SignUp = () => {
             }}
           />
         </div>
-        <br />
-        <div>
-          <label>Gamertag</label>
-          <br />
+      
+        <div className="inputContainer">
+          <label className="label">Gamertag</label>
+        
           <input
             required
             type="text"
             name="gamerTag"
+            className="input"
             value={user.gamerTag}
             placeholder="Gamertag"
             onChange={(evt) => {
@@ -69,14 +73,15 @@ const SignUp = () => {
             }}
           />
         </div>
-        <br />
-        <div>
-          <label>Phone</label>
-          <br />
+     
+        <div className="inputContainer">
+          <label className="label">Phone</label>
+        
           <input
             required
             type="text"
             name="phone"
+            className="input"
             value={user.phone}
             placeholder="Password"
             onChange={(evt) => {
@@ -84,14 +89,15 @@ const SignUp = () => {
             }}
           />
         </div>
-        <br />
-        <div>
-          <label>Password</label>
-          <br />
+      
+        <div className="inputContainer">
+          <label className="label">Password</label>
+       
           <input
             required
             type="text"
             name="password"
+            className="input"
             value={user.password}
             placeholder="Password"
             onChange={(evt) => {
@@ -99,14 +105,15 @@ const SignUp = () => {
             }}
           />
         </div>
-        <br />
-        <div>
-          <label>Confirm Password</label>
-          <br />
+     
+        <div className="inputContainer">
+          <label className="label">Confirm Password</label>
+        
           <input
             required
             type="text"
             name="confirmPassword"
+            className="input"
             value={user.confirmPassword}
             placeholder="Confirm Password"
             onChange={(evt) => {
@@ -114,7 +121,7 @@ const SignUp = () => {
             }}
           />
         </div>
-        <br />
+        
         <button type="submit" value="Sign Up">
           Sign Up
         </button>
