@@ -12,6 +12,7 @@ import AddTeam from './components/team/AddTeam'
 import AddTournament from './components/tournament/AddTournament'
 import Adminpage from './components/admin/Adminpage'
 import DeletePlayer from './components/player/DeletePlayer'
+import SignUp from './components/user/SignUp'
 
 
 
@@ -29,6 +30,7 @@ function App() {
       <Route path="/tournament" element={<DisplayTournament />} />
       <Route path="/match" element={<DisplayMatches />} />
       <Route path="/admin" element={<Adminpage/>}/>
+      <Route path="/signup" element={<SignUp/>}/>
       </Routes>
       <DeletePlayer/>
       </BrowserRouter>

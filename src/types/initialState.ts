@@ -1,4 +1,4 @@
-import { Player, Team, Match, Tournament } from "./types"
+import { Player, Team, Match, Tournament, SignUp, LogIn,  } from "./types"
 
 export const  playerInitialState: Player = {
     name: "default"
@@ -38,4 +38,19 @@ export const tournamentInputInitialState: Tournament = {
     name: "default",
     maxTeams: 0,
     minTeams: 0
+}
+
+export const signUpInitialState: SignUp = {
+    name: "default",
+    email: "default",
+    password: "defaul",
+    confirmPassword: "default",
+    gamerTag: "default",
+    phone: 0
+
+}
+
+export const logInInitialState: LogIn = {
+    email: "default",
+    password: "default"
 }

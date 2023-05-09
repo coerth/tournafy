@@ -4,6 +4,8 @@ export type Player = {
     gamerTag?: string,
     email?: string,
     phone?: number
+    hash_password?: string
+    role?: string
 }
 
 export type Team = {
@@ -34,6 +36,19 @@ export type Tournament = {
     teams?: Team[]
 }
 
+export type SignUp = {
+    name: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    gamerTag: string,
+    phone: number
+}
+
+export type LogIn = {
+    email: string,
+    password: string
+}
 
 export type Args = {
     id: string;
