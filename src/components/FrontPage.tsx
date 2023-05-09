@@ -1,11 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-//import Modal from './modal/modal';
-//import useModal from '../hooks/useModal';
+import Modal from './modal/Modal';
+import useModal from '../hooks/useModal';
+import DeletePlayer from './player/DeletePlayer';
+import Adminpage from './admin/Adminpage';
 
 
 const FrontPage = () => {
-  //const { isOpen, toggle } = useModal();
+  const { isOpen, toggle } = useModal();
 
   const navigate = useNavigate();
 
@@ -38,8 +40,10 @@ const FrontPage = () => {
         </div>
         <div className='frontpage-menu'>
         <section >
-        <h3>Modal Test</h3>
-        <p>See Modal</p>
+        <h3>Admin</h3>
+        <p>See Adminpage</p>
+        <button onClick={toggle}>Go to Admin</button>
+          <Modal isOpen={isOpen} toggle={toggle} children={<DeletePlayer/>} />
         </section>
         </div>
         </div>

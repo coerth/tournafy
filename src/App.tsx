@@ -12,13 +12,9 @@ import AddTeam from './components/team/AddTeam'
 import AddTournament from './components/tournament/AddTournament'
 import Adminpage from './components/admin/Adminpage'
 import DeletePlayer from './components/player/DeletePlayer'
-import Modal from './components/modal/modal'
-import useModal from './hooks/useModal'
-
 
 
 function App() {
-  const { isOpen, toggle } = useModal();
 
   return (
     <div className="App">
@@ -32,8 +28,7 @@ function App() {
       <Route path="/match" element={<DisplayMatches />} />
       <Route path="/admin" element={<Adminpage/>}/>
       </Routes>
-      <button onClick={toggle}>Go to Modal</button>
-          <Modal isOpen={isOpen} toggle={toggle} children={<DeletePlayer/>} />
+      
       </BrowserRouter>
 
     </div>
