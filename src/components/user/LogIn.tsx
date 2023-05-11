@@ -16,7 +16,7 @@ const LogIn = () => {
   if (data && data != undefined)
   {
     localStorage.setItem("auth:token", data.sign_in.token);
-    loggedInPlayerVar(data.sign_in.player)
+    localStorage.setItem("player", JSON.stringify(data.sign_in.player))
   } 
     
 

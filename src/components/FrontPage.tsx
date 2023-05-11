@@ -2,12 +2,18 @@ import { useQuery } from '@apollo/client';
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IS_LOGGED_IN, LOGGED_IN_PLAYER } from '../../graphql/query';
+import { loggedInPlayerVar } from '../client/cache';
+import { Player } from '../types/types';
 
 const FrontPage = () => {
   const navigate = useNavigate();
 
-  const {data} = useQuery(LOGGED_IN_PLAYER)
-  if(data) console.log(data.loggedInPlayer)
+  let player = localStorage.getItem("player");
+
+  const {data} = useQuery(LOGGED_IN_PLAYER);
+  if(player) console.log(JSON.parse(player? player : ""));
+
+  
 
   return (
     <div>
