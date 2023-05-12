@@ -102,3 +102,7 @@
 .username-header{
   margin-right: 15px;
 }
+
+.signup-button {
+  float: right;
+}
