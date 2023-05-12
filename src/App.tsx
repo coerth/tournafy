@@ -30,7 +30,6 @@ function App() {
       <Route path="/tournament" element={<DisplayTournament />} />
       <Route path="/match" element={<DisplayMatches />} />
       <Route path="/admin" element={<Adminpage/>}/>
-      <Route path="/signup" element={<SignUp/>}/>
       </Routes>
       </BrowserRouter>
 
