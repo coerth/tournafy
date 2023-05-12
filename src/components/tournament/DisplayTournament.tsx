@@ -10,6 +10,7 @@ type Props = {
 }
 
 const DisplayTournament:React.FC<Props> = ({tournament, setShowTournament}): JSX.Element => {
+    
 
     useEffect(() => {
     }, [])

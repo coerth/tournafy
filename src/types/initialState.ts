@@ -54,3 +54,5 @@ export const logInInitialState: LogIn = {
     email: "",
     password: ""
 }
+
+export const tournamentGameTypes = ["All","Counter Strike", "League of Legends", "Rocket League", "Scrabble", "Fortnite","Speed Running","Hearthstone","Apex Legends", "Other"]

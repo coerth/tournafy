@@ -4,67 +4,57 @@ import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { useQuery} from '@apollo/client';
 import DisplayTournament from './DisplayTournament';
 import { useNavigate } from 'react-router-dom'
-import { tournamentInitialState } from '../../types/initialState';
+import { tournamentGameTypes } from '../../types/initialState';
+import TournamentTable from './TournamentTable';
 
 
 
 const DisplayTournaments = () => {
-  const navigate = useNavigate();
-
+  const[filter, setFilter] = useState(false)
+  const[selectedFilter, setSelectedFilter] = useState("All")
   const { loading, error, data } = useQuery(GET_TOURNAMENTS);
-
-  const [tournament, setTournament] = useState<Tournament>(tournamentInitialState);
-  const [showTournament, setShowTournament] = useState(false)
-
-  function seeTournament(id: string) {
-    let index = data.tournaments?.findIndex((tournament: Tournament) => tournament._id === id)
-    setTournament(data.tournaments[index])
-    setShowTournament(!showTournament)
-  }
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error : {error.message}</p>; 
 
+  const onFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    event.preventDefault()
+    let filter = event.target.value
+    console.log(filter)
+    if(filter === "All")
+    {
+      setFilter(false)
+    }
+
+    else{
+      setFilter(true)
+    
+    }
+    setSelectedFilter(filter)
+  }
+
     return (
     <div>
-      {!showTournament &&
-      <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    {/* <th>Game Type</th> */}
-                    {/* <th>Available Spots</th> */}
-                </tr>
-            </thead>
-            <tbody>
-            {data.tournaments?.map( (tournament:Tournament) => {
-        return(
-            <tr key={tournament._id}>
-              <td>{tournament._id}</td>
-              <td>{tournament.name}</td>
-              <td>{tournament.startDate}</td>
-              <td>{tournament.endDate}</td>
-              {/* <td>{tournament.gameType}</td> */}
-              {/* <td>{tournament.maxTeams? tournament.maxTeams - tournament.teams.length : 0}</td> */}
-              <td><button onClick={() => seeTournament(tournament._id? tournament._id : "")}>See Tournament</button></td>
 
-            </tr>
-        )
-      } )}
-            </tbody>
-        </table>
-        <button onClick={()=>navigate(-1)}>Return</button>
+    <select
+            className="tournament_filter"
+            name="tfilter"
+            id="tfilter"
+            onChange={onFilterChange}
+          >
+            {tournamentGameTypes &&
+              tournamentGameTypes.map((game) => (
+                <option
+                  key={game}
+                  value={tournamentGameTypes.find(x => x === game)}
+                >
+                  {game}
+                </option>
+              ))}
+          </select>
 
-        </div>
-}
+      <TournamentTable tournaments={filter ? data.tournaments.filter((t: Tournament): t is Tournament => t.tournamentGame === selectedFilter ) : data.tournaments }/>
 
-{showTournament &&
-<DisplayTournament tournament={tournament} setShowTournament={setShowTournament}/>
-}
     </div>
   )
 }

@@ -59,33 +59,42 @@ query GetTeams {
     
     query GetTournaments {
       tournaments {
-        name
-        endDate
         _id
+        endDate
         matches {
+          _id
           date
           location
           score
           stage
           teams {
+            _id
             name
-            captain {
-              name
-            }
           }
           winner {
+            _id
             name
           }
         }
+        maxTeams
+        minTeams
+        name
         startDate
+        tournamentGame
+        tournamentType
         teams {
+          _id
           captain {
+            _id
             name
           }
           name
           players {
+            _id
+            email
             gamerTag
             name
+            phone
           }
         }
       }

@@ -14,7 +14,6 @@ const Header = () => {
               <div>
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/tournament">Tournaments</NavLink>
-                <NavLink to="/game">Games</NavLink>
                 <NavLink to="/match">Match</NavLink>
                 <NavLink to="/team">Team</NavLink>
                 <NavLink to="/admin">Admin</NavLink>

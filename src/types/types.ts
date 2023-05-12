@@ -30,6 +30,7 @@ export type Tournament = {
     startDate?: string,
     endDate?: string,
     tournamentType?: string,
+    tournamentGame?: string,
     maxTeams: number,
     minTeams: number,
     matches?: Match[],
