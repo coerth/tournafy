@@ -32,7 +32,6 @@ function App() {
       <Route path="/admin" element={<Adminpage/>}/>
       <Route path="/signup" element={<SignUp/>}/>
       </Routes>
-      <DeletePlayer/>
       </BrowserRouter>
 
     </div>

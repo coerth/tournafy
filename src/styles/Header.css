@@ -18,6 +18,7 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  margin-right: 10px;
 }
 
 /* Navbar links on mouse-over */
@@ -41,17 +42,18 @@
 .topnav input[type="text"] {
   padding: 6px;
   margin-top: 8px;
+  margin-right: 15px;
   font-size: 17px;
-  width: 150px; /* adjust as needed (as long as it doesn't break the topnav) */
+  width: 200px; /* adjust as needed (as long as it doesn't break the topnav) */
 }
 
 /* Style the button inside the input container */
 .topnav .login-container button {
   float: right;
-  padding: 6px;
+  padding: 5px;
   margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
+  margin-right: 20px;
+  background: #0D8895;
   font-size: 17px;
   border: none;
   cursor: pointer;
