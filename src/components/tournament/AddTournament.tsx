@@ -26,17 +26,25 @@ const AddTournament = () => {
         <form onSubmit={createNewTournament}>
           <h1>Add Tournament</h1>
         <br/>
+        Tournament Name
+        <br/>
         <label>
         <input required type="text" name="name" placeholder='name' value={tournament.name} onChange={(evt)=>{setTournament({...tournament, name:evt.target.value})}}/>
         </label>
+        <br/>
+        Minimum amount of teams
+        <br/>
+        <label>
+        <input required type="number" name="minTeams" placeholder='minTeams' value={tournament.minTeams} onChange={(evt)=>{setTournament({...tournament, minTeams:parseInt(evt.target.value)})}}/>
+        </label>
+        <br/>
+        Max amount of teams
         <br/>
         <label>
         <input required type="number" name="maxTeam" placeholder='maxTeam' value={tournament.maxTeams} onChange={(evt)=>{setTournament({...tournament, maxTeams: parseInt(evt.target.value)})}}/>
         </label>
         <br/>
-        <label>
-        <input required type="number" name="minTeams" placeholder='minTeams' value={tournament.minTeams} onChange={(evt)=>{setTournament({...tournament, minTeams:parseInt(evt.target.value)})}}/>
-        </label>
+          Start Date
         <br/>
         <label>
         <input
@@ -47,6 +55,8 @@ const AddTournament = () => {
         onBlur={(evt)=>{setTournament({...tournament, startDate:convertFormStringToDate(evt.target.value)})}}
         required />
         </label>
+        <br/>
+          End Date
         <br/>
         <label>
         <input

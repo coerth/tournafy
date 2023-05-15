@@ -29,16 +29,16 @@ export const tournamentInitialState: Tournament = {
     name: "default",
     startDate: dateFormatForm(new Date()),
     endDate: "2050-12-31",
-    maxTeams: 0,
-    minTeams: 0,
+    maxTeams: 2,
+    minTeams: 2,
     matches: [matchInitialState],
     teams: [teamInitialState],
 }
 
 export const tournamentInputInitialState: Tournament = {
     name: "default",
-    maxTeams: 0,
-    minTeams: 0
+    maxTeams: 2,
+    minTeams: 2
 }
 
 export const signUpInitialState: SignUp = {
