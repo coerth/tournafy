@@ -1,4 +1,5 @@
 import { Player, Team, Match, Tournament, SignUp, LogIn,  } from "./types"
+import { dateFormatForm } from "../utility/date"
 
 export const  playerInitialState: Player = {
     name: "default"
@@ -26,8 +27,8 @@ export const matchInitialState: Match = {
 
 export const tournamentInitialState: Tournament = {
     name: "default",
-    startDate: "default",
-    endDate: "default",
+    startDate: dateFormatForm(new Date()),
+    endDate: "2050-12-31",
     maxTeams: 0,
     minTeams: 0,
     matches: [matchInitialState],

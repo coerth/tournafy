@@ -3,6 +3,7 @@ import {Tournament, Match, Team, Player} from '../../types/types'
 import { tournamentGameTypes, tournamentInitialState } from '../../types/initialState';
 import { useNavigate } from 'react-router-dom'
 import DisplayTournament from './DisplayTournament';
+import { stringToDate } from '../../utility/date';
 
 
 type Props = {
@@ -17,8 +18,10 @@ const [tournament, setTournament] = useState<Tournament>(tournamentInitialState)
   function seeTournament(id: string) {
     let index = tournaments?.findIndex((tournament: Tournament) => tournament._id === id)
     setTournament(tournaments[index])
-    setShowTournament(!showTournament)
+    setShowTournament(!showTournament) 
   }
+
+  
 
   return (
     <div>
@@ -45,8 +48,8 @@ const [tournament, setTournament] = useState<Tournament>(tournamentInitialState)
               <td>{tournament.tournamentGame ? tournament.tournamentGame : ""}</td>
               <td>{tournament.tournamentType}</td>
               { <td>{tournament.maxTeams? tournament.maxTeams - tournament.teams?.length : 0}</td> }
-              <td>{tournament.startDate}</td>
-              <td>{tournament.endDate}</td>
+              <td>{ stringToDate(tournament.startDate ? tournament.startDate : "")}</td>
+              <td>{stringToDate(tournament.endDate ? tournament.endDate : "")}</td>
               <td><button onClick={() => seeTournament(tournament._id? tournament._id : "")}>See Tournament</button></td>
 
             </tr>

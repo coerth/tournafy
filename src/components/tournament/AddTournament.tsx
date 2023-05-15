@@ -4,6 +4,7 @@ import { tournamentInputInitialState } from '../../types/initialState';
 import { CREATE_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation';
 import {useMutation } from '@apollo/client';
 import { GET_TOURNAMENTS } from '../../../graphql/query';
+import { convertFormStringToDate, dateFormatForm } from '../../utility/date';
 
 
 const AddTournament = () => {
@@ -18,6 +19,7 @@ const AddTournament = () => {
     const createNewTournament = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         mutateFunction({variables: { input: tournament }}); 
+        
     }
   return (
     <div>
@@ -34,6 +36,26 @@ const AddTournament = () => {
         <br/>
         <label>
         <input required type="number" name="minTeams" placeholder='minTeams' value={tournament.minTeams} onChange={(evt)=>{setTournament({...tournament, minTeams:parseInt(evt.target.value)})}}/>
+        </label>
+        <br/>
+        <label>
+        <input
+        type="date"
+        name="startDate"
+        min={dateFormatForm(new Date())}
+        max="2050-12-31"
+        onBlur={(evt)=>{setTournament({...tournament, startDate:convertFormStringToDate(evt.target.value)})}}
+        required />
+        </label>
+        <br/>
+        <label>
+        <input
+        type="date"
+        name="EndDate"
+        min={dateFormatForm(new Date())}
+        max="2050-12-31"
+        onBlur={(evt)=>{setTournament({...tournament, endDate:convertFormStringToDate(evt.target.value)})}}
+        required />
         </label>
         <br/>
         <input type="submit" value="Add new Tournament" />
