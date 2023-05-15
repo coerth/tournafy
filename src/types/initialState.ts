@@ -38,7 +38,8 @@ export const tournamentInitialState: Tournament = {
 export const tournamentInputInitialState: Tournament = {
     name: "default",
     maxTeams: 2,
-    minTeams: 2
+    minTeams: 2,
+    tournamentGame: "Counter Strike"
 }
 
 export const signUpInitialState: SignUp = {
@@ -57,3 +58,4 @@ export const logInInitialState: LogIn = {
 }
 
 export const tournamentGameTypes = ["All","Counter Strike", "League of Legends", "Rocket League", "Scrabble", "Fortnite","Speed Running","Hearthstone","Apex Legends", "Other"]
+export const inputTournamentGameTypes = ["Counter Strike", "League of Legends", "Rocket League", "Scrabble", "Fortnite","Speed Running","Hearthstone","Apex Legends", "Other"]

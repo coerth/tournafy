@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { tournamentInputInitialState } from '../../types/initialState';
+import { inputTournamentGameTypes, tournamentInputInitialState } from '../../types/initialState';
 import { CREATE_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation';
 import {useMutation } from '@apollo/client';
 import { GET_TOURNAMENTS } from '../../../graphql/query';
@@ -32,6 +32,25 @@ const AddTournament = () => {
         <input required type="text" name="name" placeholder='name' value={tournament.name} onChange={(evt)=>{setTournament({...tournament, name:evt.target.value})}}/>
         </label>
         <br/>
+        Tournament Game
+        <br/>
+        <select
+            className="tournament_filter"
+            name="tfilter"
+            id="tfilter"
+            onChange={(evt)=>{setTournament({...tournament, tournamentGame:evt.target.value})}}
+          >
+            {inputTournamentGameTypes &&
+              inputTournamentGameTypes.map((game) => (
+                <option
+                  key={game}
+                  value={inputTournamentGameTypes.find(x => x === game)}
+                >
+                  {game}
+                </option>
+              ))}
+          </select>
+          <br/>
         Minimum amount of teams
         <br/>
         <label>
