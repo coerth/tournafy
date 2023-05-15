@@ -68,6 +68,7 @@ const AddTournament = () => {
         required />
         </label>
         <br/>
+        <br/>
         <input type="submit" value="Add new Tournament" />
     </form>
     </div>
