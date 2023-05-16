@@ -20,6 +20,7 @@ const Header = () => {
                 <NavLink to="/match">Match</NavLink>
                 <NavLink to="/team">Team</NavLink>
                 <NavLink to="/admin">Admin</NavLink>
+                <NavLink to="/bracket">Bracket</NavLink>
                 {isLoggedIn ? <Logout /> : <LogIn />}
               </div>
             </div>

@@ -47,7 +47,7 @@ const [tournament, setTournament] = useState<Tournament>(tournamentInitialState)
               <td>{tournament.name}</td>
               <td>{tournament.tournamentGame ? tournament.tournamentGame : ""}</td>
               <td>{tournament.tournamentType}</td>
-              { <td>{tournament.maxTeams? tournament.maxTeams - tournament.teams?.length : 0}</td> }
+              { <td>{tournament.maxTeams? tournament.maxTeams - tournament.teams?.length! : 0}</td> }
               <td>{ stringToDate(tournament.startDate ? tournament.startDate : "")}</td>
               <td>{stringToDate(tournament.endDate ? tournament.endDate : "")}</td>
               <td><button onClick={() => seeTournament(tournament._id? tournament._id : "")}>See Tournament</button></td>

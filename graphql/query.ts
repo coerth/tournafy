@@ -114,3 +114,21 @@ export const LOGGED_IN_PLAYER = gql `
     loggedInPlayer @client
   }
 `
+
+export const GET_TOURNAMENT_MATCH = gql `
+    
+query Tournament($tournamentId: ID!) {
+  tournament(id: $tournamentId) {
+    _id
+    matches {
+      _id
+      stage
+      teams {
+        _id
+        name
+      }
+    }
+  }
+}
+
+  `;

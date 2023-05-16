@@ -17,9 +17,9 @@ export type Team = {
 
 export type Match = {
     _id?: string,
-    location: string,
-    winner: Team,
-    score: number[],
+    location?: string,
+    winner?: Team,
+    score?: number[],
     stage: number
     teams: Team[]
 }

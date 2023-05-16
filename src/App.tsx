@@ -13,6 +13,7 @@ import AddTournament from './components/tournament/AddTournament'
 import Adminpage from './components/admin/Adminpage'
 import DeletePlayer from './components/player/DeletePlayer'
 import SignUp from './components/user/SignUp'
+import TournamentBracket from './components/tournament/TournamentBracket'
 
 
 
@@ -30,6 +31,7 @@ function App() {
       <Route path="/tournament" element={<DisplayTournament />} />
       <Route path="/match" element={<DisplayMatches />} />
       <Route path="/admin" element={<Adminpage/>}/>
+      <Route path='/bracket' element={<TournamentBracket />}/>
       </Routes>
       </BrowserRouter>
 
