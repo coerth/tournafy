@@ -51,7 +51,7 @@ const AddTournament = () => {
               ))}
           </select>
           <br/>
-        Minimum amount of teams
+        {/* Minimum amount of teams
         <br/>
         <label>
         <input required type="number" name="minTeams" placeholder='minTeams' value={tournament.minTeams} onChange={(evt)=>{setTournament({...tournament, minTeams:parseInt(evt.target.value)})}}/>
@@ -62,7 +62,7 @@ const AddTournament = () => {
         <label>
         <input required type="number" name="maxTeam" placeholder='maxTeam' value={tournament.maxTeams} onChange={(evt)=>{setTournament({...tournament, maxTeams: parseInt(evt.target.value)})}}/>
         </label>
-        <br/>
+        <br/> */}
           Start Date
         <br/>
         <label>

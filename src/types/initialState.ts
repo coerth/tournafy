@@ -37,8 +37,8 @@ export const tournamentInitialState: Tournament = {
 
 export const tournamentInputInitialState: Tournament = {
     name: "default",
-    maxTeams: 2,
-    minTeams: 2,
+    maxTeams: 8,
+    minTeams: 8,
     tournamentGame: "Counter Strike"
 }
 

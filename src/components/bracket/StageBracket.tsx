@@ -1,15 +1,16 @@
 import React from 'react'
 import { Match } from '../../types/types'
-import MatchBracket from "../match/MatchBracket";
+import MatchBracket from "./MatchBracket";
 
 
 type Props = {
     matches: Match[] | undefined;
+    key: number
   };
 
-const StageBracket:React.FC<Props> = ({matches}): JSX.Element => {
+const StageBracket:React.FC<Props> = ({matches, key}): JSX.Element => {
   return (
-    <div className="stage">
+    <div className="stage" key={key}>
         {matches?.map((match: Match) => {
             
               return <MatchBracket match={match}/>

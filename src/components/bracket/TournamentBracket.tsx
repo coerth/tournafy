@@ -4,31 +4,26 @@ import { Match, Tournament } from "../../types/types";
 import { GET_TOURNAMENT_MATCH } from "../../../graphql/query";
 import { useQuery } from "@apollo/client";
 import { bracketInitialState } from "../../types/initialState";
-import MatchBracket from "../match/MatchBracket";
-import StageBracket from "../match/StageBracket";
+import MatchBracket from "./MatchBracket";
+import StageBracket from ".//StageBracket";
 
 type Props = {
-  tournament: Tournament[];
+  matches: Match[] | undefined;
 };
 
-const TournamentBracket= () => {
+const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
   const [bracket, setBracket] = useState(bracketInitialState)
 
-  const { loading, error, data } = useQuery(GET_TOURNAMENT_MATCH, {
-    variables: {tournamentId: "6461f1fc28858a4ca6532574"}
-  });
-
   useEffect(() => {
-  if(data)
+  if(matches)
   {
 
-  convertMatchesToHashMap(data.tournament.matches)
+  convertMatchesToHashMap(matches)
   }
 
-  }, [loading])
+  }, [matches])
   
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error : {error.message}</p>; 
+  if (!matches) return <p>No Bracket yet...</p>
 
    function convertMatchesToHashMap(matches: Match[]) {
       let newBracket = new Map<number, Match[]>()
@@ -45,29 +40,21 @@ const TournamentBracket= () => {
           newBracket.set(match.stage, [match])
         }
       } )
-      console.log(newBracket)
 
       let reverseMap = new Map([...newBracket.entries()].reverse());
-      console.log(reverseMap)
       setBracket(reverseMap)
    }  
 
 
   return (
     <div>
-    { !loading &&
+    { matches &&
     <div className="bracket">
 
-      {bracket.forEach((value: Match[], key: number) => {
-        return <StageBracket matches={value ? value : []} />
-});
+      {[...bracket.keys()].map( key => {
+     return  <StageBracket key={key} matches={bracket.get(key) ? bracket.get(key) : []} />
+      })
       }
-
-      
-
-      <StageBracket matches={bracket.get(3) ? bracket.get(3) : []} />
-      <StageBracket matches={bracket.get(2) ? bracket.get(2) : []} />
-      <StageBracket matches={bracket.get(1) ? bracket.get(1) : []} />
     </div>
     }
     </div>
