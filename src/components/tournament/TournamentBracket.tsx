@@ -1,60 +1,75 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/Bracket.css";
-import { Match } from "../../types/types";
+import { Match, Tournament } from "../../types/types";
 import { GET_TOURNAMENT_MATCH } from "../../../graphql/query";
 import { useQuery } from "@apollo/client";
+import { bracketInitialState } from "../../types/initialState";
+import MatchBracket from "../match/MatchBracket";
+import StageBracket from "../match/StageBracket";
 
 type Props = {
-  match: Match[];
+  tournament: Tournament[];
 };
 
 const TournamentBracket= () => {
-    const { loading, error, data } = useQuery(GET_TOURNAMENT_MATCH, {
-        variables: {tournamentId: "6461f1fc28858a4ca6532574"}
-    });
+  const [bracket, setBracket] = useState(bracketInitialState)
 
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error : {error.message}</p>; 
+  const { loading, error, data } = useQuery(GET_TOURNAMENT_MATCH, {
+    variables: {tournamentId: "6461f1fc28858a4ca6532574"}
+  });
+
+  useEffect(() => {
+  if(data)
+  {
+
+  convertMatchesToHashMap(data.tournament.matches)
+  }
+
+  }, [loading])
+  
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error : {error.message}</p>; 
+
+   function convertMatchesToHashMap(matches: Match[]) {
+      let newBracket = new Map<number, Match[]>()
+
+      matches.forEach( match => {
+
+        if (newBracket.has(match.stage))
+        {
+          
+          newBracket.get(match.stage)?.push(match)
+        }
+        else
+        {
+          newBracket.set(match.stage, [match])
+        }
+      } )
+      console.log(newBracket)
+
+      let reverseMap = new Map([...newBracket.entries()].reverse());
+      console.log(reverseMap)
+      setBracket(reverseMap)
+   }  
 
 
   return (
+    <div>
+    { !loading &&
     <div className="bracket">
-      <div className="stage">
-        {data.tournament.matches.map((match: Match) => {
-            if(match.stage === 3){
-            return (
-            <div className="match" key={match._id}>
-                <div className="team">{match.teams[0] ? match.teams[0].name : ""}</div>
-                <div className="team">{match.teams[1] ? match.teams[1].name : ""}</div>
-            </div>
-            )
-            }
-        })}
-      </div>
-      <div className="stage">
-      {data.tournament.matches.map((match: Match) => {
-            if(match.stage === 2){
-            return (
-            <div className="match" key={match._id}>
-                <div className="team">{match.teams[0] ? match.teams[0].name : "Stage not active"}</div>
-                <div className="team">{match.teams[1] ? match.teams[1].name : "Stage not active"}</div>
-            </div>
-            )
-            }
-        })}
-      </div>
-      <div className="stage">
-      {data.tournament.matches.map((match: Match) => {
-            if(match.stage === 1){
-            return (
-            <div className="match" key={match._id}>
-                <div className="team">{match.teams[0] ? match.teams[0].name : "Stage not active"}</div>
-                <div className="team">{match.teams[1] ? match.teams[1].name : "Stage not active"}</div>
-            </div>
-            )
-            }
-        })}
-      </div>
+
+      {bracket.forEach((value: Match[], key: number) => {
+        return <StageBracket matches={value ? value : []} />
+});
+      }
+
+      
+
+      <StageBracket matches={bracket.get(3) ? bracket.get(3) : []} />
+      <StageBracket matches={bracket.get(2) ? bracket.get(2) : []} />
+      <StageBracket matches={bracket.get(1) ? bracket.get(1) : []} />
+    </div>
+    }
     </div>
   );
 };

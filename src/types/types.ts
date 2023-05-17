@@ -21,7 +21,7 @@ export type Match = {
     winner?: Team,
     score?: number[],
     stage: number
-    teams: Team[]
+    teams?: Team[]
 }
 
 export type Tournament = {

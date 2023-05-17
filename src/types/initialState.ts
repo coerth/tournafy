@@ -58,4 +58,7 @@ export const logInInitialState: LogIn = {
 }
 
 export const tournamentGameTypes = ["All","Counter Strike", "League of Legends", "Rocket League", "Scrabble", "Fortnite","Speed Running","Hearthstone","Apex Legends", "Other"]
+
 export const inputTournamentGameTypes = ["Counter Strike", "League of Legends", "Rocket League", "Scrabble", "Fortnite","Speed Running","Hearthstone","Apex Legends", "Other"]
+
+export const bracketInitialState = new Map<number, Match[]>()
