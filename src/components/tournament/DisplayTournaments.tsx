@@ -12,6 +12,7 @@ import TournamentTable from './TournamentTable';
 const DisplayTournaments = () => {
   const[filter, setFilter] = useState(false)
   const[selectedFilter, setSelectedFilter] = useState("All")
+  
   const { loading, error, data } = useQuery(GET_TOURNAMENTS);
 
   if (loading) return <p>Loading...</p>

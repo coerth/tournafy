@@ -132,3 +132,16 @@ query Tournament($tournamentId: ID!) {
 }
 
   `;
+
+  export const GET_TOURNAMENTS_AND_TEAMS = gql `
+  query TournamentsAndTeams {
+    tournaments {
+      _id
+      name
+    }
+    teams {
+      _id
+      name
+    }
+  }
+  `

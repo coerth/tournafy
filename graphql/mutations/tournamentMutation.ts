@@ -20,3 +20,21 @@ import { gql } from '@apollo/client';
     }
   }
   `
+
+  export const ADD_TEAM_TO_TOURNAMENT = gql `
+  mutation AddTeamToTournament($addTeamToTournamentId: ID!, $input: AddTeamInput!) {
+    addTeamToTournament(id: $addTeamToTournamentId, input: $input) {
+      _id
+      endDate
+      maxTeams
+      minTeams
+      name
+      startDate
+      teams {
+        _id
+        name
+      }
+      tournamentGame
+      tournamentType
+    }
+  }`
