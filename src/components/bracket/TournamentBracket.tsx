@@ -52,27 +52,25 @@ const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
      setBracket(newBracket)
    }  
 
-   const advanceTeamToNextStage = (matches: Match[], stage: number) => {
+   function advanceTeamToNextStage (matches: Match[], stage: number) {
     let winnerArray = [];
 
     for(const match of matches){
       winnerArray.push(match.winner)
     }
-    console.log(winnerArray)
 
     if(stage != 1){
       let nextStageMatches = bracket.get(stage-1);
       if(nextStageMatches){
-      for(const match of nextStageMatches!){
+      for(let match of nextStageMatches!){
         if(match.teams?.length != 2){
-          match.teams! = [winnerArray[0]!, winnerArray[1]!]
-          winnerArray.splice(0,2)
           mutateFunction({
             variables: {
               updateMatchId: match._id,
-              input: {match}
+              input: {location: match.location ? match.location : "", stage: match.stage, teams: [winnerArray[0]!._id, winnerArray[1]!._id]}
             },
           });
+          winnerArray.splice(0,2)
         }
       }
     }
@@ -86,7 +84,8 @@ const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
     <div className="bracket">
 
       {[...bracket.keys()].map( key => {
-     return  <StageBracket key={key} matches={bracket.get(key) ? bracket.get(key) : []} advanceTeamToNextStage={advanceTeamToNextStage} />
+        console.log(key)
+     return  <StageBracket stage={key} matches={bracket.get(key) ? bracket.get(key) : []} advanceTeamToNextStage={advanceTeamToNextStage} />
       })
       }
     </div>
