@@ -41,8 +41,7 @@ const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
         }
       } )
 
-      let reverseMap = new Map([...newBracket.entries()].reverse());
-      setBracket(reverseMap)
+     setBracket(newBracket)
    }  
 
 
