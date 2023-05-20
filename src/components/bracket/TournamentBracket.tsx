@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/Bracket.css";
-import { Match, Tournament } from "../../types/types";
+import { Match } from "../../types/types";
 import { GET_MATCHES, GET_TOURNAMENTS, GET_TOURNAMENT_MATCH } from "../../../graphql/query";
 import { useMutation, useQuery } from "@apollo/client";
 import { bracketInitialState } from "../../types/initialState";
-import MatchBracket from "./MatchBracket";
 import StageBracket from ".//StageBracket";
 import { UPDATE_MATCH } from "../../../graphql/mutations/matchMutation";
 
