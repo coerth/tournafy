@@ -2,23 +2,23 @@ import { Player, Team, Match, Tournament, SignUp, LogIn,  } from "./types"
 import { dateFormatForm } from "../utility/date"
 
 export const  playerInitialState: Player = {
-    name: "default"
+    name: ""
 }
 
 export const teamInitialState: Team = {
-    name: "default",
+    name: "t",
     captain: playerInitialState,
     players: [playerInitialState]
 }
 
 export const teamInputInitialState = {
-    name: "default",
-    captain: "default",
+    name: "",
+    captain: "",
     players: new Array<String>
 }
 
 export const matchInitialState: Match = {
-    location: "default",
+    location: "",
     winner: teamInitialState,
     score: [0,0],
     stage: 0,
@@ -26,7 +26,7 @@ export const matchInitialState: Match = {
 }
 
 export const tournamentInitialState: Tournament = {
-    name: "default",
+    name: "",
     startDate: dateFormatForm(new Date()),
     endDate: "2050-12-31",
     maxTeams: 2,
@@ -36,7 +36,7 @@ export const tournamentInitialState: Tournament = {
 }
 
 export const tournamentInputInitialState: Tournament = {
-    name: "default",
+    name: "",
     maxTeams: 8,
     minTeams: 8,
     tournamentGame: "Counter Strike"
