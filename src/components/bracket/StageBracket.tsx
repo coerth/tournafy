@@ -6,9 +6,10 @@ import MatchBracket from "./MatchBracket";
 type Props = {
     matches: Match[] | undefined;
     key: number
+    advanceTeamToNextStage: Function
   };
 
-const StageBracket:React.FC<Props> = ({matches, key}): JSX.Element => {
+const StageBracket:React.FC<Props> = ({matches, key, advanceTeamToNextStage}): JSX.Element => {
   return (
     <div className="stage" key={key}>
         {matches?.map((match: Match) => {
@@ -16,6 +17,8 @@ const StageBracket:React.FC<Props> = ({matches, key}): JSX.Element => {
               return <MatchBracket match={match}/>
             
         })}
+
+        <button onClick={advanceTeamToNextStage(matches, key)}>Next Stage</button>
       </div>
   )
 }

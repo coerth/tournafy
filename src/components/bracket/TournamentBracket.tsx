@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/Bracket.css";
 import { Match, Tournament } from "../../types/types";
-import { GET_TOURNAMENT_MATCH } from "../../../graphql/query";
-import { useQuery } from "@apollo/client";
+import { GET_MATCHES, GET_TOURNAMENTS, GET_TOURNAMENT_MATCH } from "../../../graphql/query";
+import { useMutation, useQuery } from "@apollo/client";
 import { bracketInitialState } from "../../types/initialState";
 import MatchBracket from "./MatchBracket";
 import StageBracket from ".//StageBracket";
+import { UPDATE_MATCH } from "../../../graphql/mutations/matchMutation";
 
 type Props = {
   matches: Match[] | undefined;
@@ -22,6 +23,13 @@ const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
   }
 
   }, [matches])
+
+  const [mutateFunction, {
+    loading: mutationLoding,
+    error: mutationError,
+    data: mutationData } ] = useMutation(UPDATE_MATCH,{
+    refetchQueries: [GET_TOURNAMENTS, GET_MATCHES]
+});
   
   if (!matches) return <p>No Bracket yet...</p>
 
@@ -44,6 +52,33 @@ const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
      setBracket(newBracket)
    }  
 
+   const advanceTeamToNextStage = (matches: Match[], stage: number) => {
+    let winnerArray = [];
+
+    for(const match of matches){
+      winnerArray.push(match.winner)
+    }
+    console.log(winnerArray)
+
+    if(stage != 1){
+      let nextStageMatches = bracket.get(stage-1);
+      if(nextStageMatches){
+      for(const match of nextStageMatches!){
+        if(match.teams?.length != 2){
+          match.teams! = [winnerArray[0]!, winnerArray[1]!]
+          winnerArray.splice(0,2)
+          mutateFunction({
+            variables: {
+              updateMatchId: match._id,
+              input: {match}
+            },
+          });
+        }
+      }
+    }
+  }
+  }
+
 
   return (
     <div>
@@ -51,7 +86,7 @@ const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
     <div className="bracket">
 
       {[...bracket.keys()].map( key => {
-     return  <StageBracket key={key} matches={bracket.get(key) ? bracket.get(key) : []} />
+     return  <StageBracket key={key} matches={bracket.get(key) ? bracket.get(key) : []} advanceTeamToNextStage={advanceTeamToNextStage} />
       })
       }
     </div>
