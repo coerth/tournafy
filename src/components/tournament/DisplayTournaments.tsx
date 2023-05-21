@@ -12,6 +12,7 @@ import TournamentTable from './TournamentTable';
 const DisplayTournaments = () => {
   const[filter, setFilter] = useState(false)
   const[selectedFilter, setSelectedFilter] = useState("All")
+  const[showSelect, setShowSelect] = useState(true);
   
   const { loading, error, data } = useQuery(GET_TOURNAMENTS);
 
@@ -35,9 +36,12 @@ const DisplayTournaments = () => {
   }
 
     return (
-    <div>
+    <div className='select-tournament'>
 
-    <select
+      {showSelect && 
+      
+      <div>
+        <select
             className="tournament_filter"
             name="tfilter"
             id="tfilter"
@@ -53,8 +57,10 @@ const DisplayTournaments = () => {
                 </option>
               ))}
           </select>
+        </div>
+      }
 
-      <TournamentTable tournaments={filter ? data.tournaments.filter((t: Tournament): t is Tournament => t.tournamentGame === selectedFilter ) : data.tournaments }/>
+      <TournamentTable showSelect={setShowSelect} tournaments={filter ? data.tournaments.filter((t: Tournament): t is Tournament => t.tournamentGame === selectedFilter ) : data.tournaments }/>
 
     </div>
   )

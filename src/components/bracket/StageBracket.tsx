@@ -19,7 +19,7 @@ const StageBracket:React.FC<Props> = ({matches, stage, advanceTeamToNextStage}):
             
         })}
 
-        <button onClick={() => advanceTeamToNextStage(matches, stage)}>Next Stage</button>
+        <button className='bracket-button' onClick={() => advanceTeamToNextStage(matches, stage)}>Next Stage</button>
       </div>
   )
 }

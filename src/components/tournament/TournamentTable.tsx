@@ -8,8 +8,9 @@ import { stringToDate } from '../../utility/date';
 
 type Props = {
     tournaments: Tournament[]
+    showSelect: Function
 }
-const TournamentTable:React.FC<Props> = ({tournaments}: {tournaments: Tournament[]}): JSX.Element => {
+const TournamentTable:React.FC<Props> = ({tournaments}: {tournaments: Tournament[]}, showSelect): JSX.Element => {
     const navigate = useNavigate();
 const [tournament, setTournament] = useState<Tournament>(tournamentInitialState);
   const [showTournament, setShowTournament] = useState(false)
@@ -19,18 +20,18 @@ const [tournament, setTournament] = useState<Tournament>(tournamentInitialState)
     let index = tournaments?.findIndex((tournament: Tournament) => tournament._id === id)
     setTournament(tournaments[index])
     setShowTournament(!showTournament) 
+    showSelect(false)
   }
 
   
 
   return (
-    <div>
+    <div className='outer-table'>
       {!showTournament &&
-      <div>
+      <div >
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
                     <th>Game</th>
                     <th>Type</th>
@@ -43,7 +44,6 @@ const [tournament, setTournament] = useState<Tournament>(tournamentInitialState)
             {tournaments?.map( (tournament:Tournament) => {
         return(
             <tr key={tournament._id}>
-              <td>{tournament._id}</td>
               <td>{tournament.name}</td>
               <td>{tournament.tournamentGame ? tournament.tournamentGame : ""}</td>
               <td>{tournament.tournamentType}</td>
@@ -57,7 +57,9 @@ const [tournament, setTournament] = useState<Tournament>(tournamentInitialState)
       } )}
             </tbody>
         </table>
-        <button onClick={()=>navigate(-1)}>Return</button>
+        <div className='table-button' >
+          <button onClick={()=>navigate(-1)}>Return</button>
+        </div>
 
         </div>
 }

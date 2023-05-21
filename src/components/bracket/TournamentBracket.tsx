@@ -6,12 +6,14 @@ import { useMutation, useQuery } from "@apollo/client";
 import { bracketInitialState } from "../../types/initialState";
 import StageBracket from ".//StageBracket";
 import { UPDATE_MATCH } from "../../../graphql/mutations/matchMutation";
+import '../../styles/Bracket.css'
 
 type Props = {
   matches: Match[] | undefined;
+  returnButton: Function
 };
 
-const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
+const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element => {
   const [bracket, setBracket] = useState(bracketInitialState)
 
   useEffect(() => {
@@ -89,6 +91,7 @@ const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
       }
     </div>
     }
+    <button className='return-button' onClick={() =>returnButton()}>Return</button>
     </div>
   );
 };
