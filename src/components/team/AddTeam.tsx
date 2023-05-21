@@ -4,6 +4,7 @@ import { teamInputInitialState } from '../../types/initialState';
 import { CREATE_TEAM } from '../../../graphql/mutations/teamMutation';
 import {useMutation } from '@apollo/client';
 import { GET_TEAMS } from '../../../graphql/query';
+import Loading from '../Loading';
 
 
 const AddTeam = () => {
@@ -12,7 +13,7 @@ const AddTeam = () => {
     const [mutateFunction, { data, loading, error }] = useMutation(CREATE_TEAM,{
         refetchQueries: [GET_TEAMS]
     }); //mutateFunction is the function to call for server update. refetchQueries is the list of queries to refetch after the mutation is done. And if they were used with useQuery, they will be updated with the new data.
-    if (loading) return <>'Submitting...'</>;
+    if (loading) return <>'Submitting...' <Loading/></>;
     if (error) return <>`Submission error! ${error.message}`</>;
 
     const createNewTeam = (event: React.FormEvent<HTMLFormElement>) => {

@@ -5,6 +5,7 @@ import { GET_MATCHES, GET_TOURNAMENTS } from '../../../graphql/query';
 import Dropdown from '../Dropdown';
 import '../../styles/Modal.css'
 import { Match } from '../../types/types';
+import Loading from '../Loading';
 
 type EditMatchProps = {
   match: Match
@@ -38,7 +39,7 @@ export const EditMatch: React.FC<EditMatchProps> = ({ match }) => {
     });
   };
 
-  if (mutationLoding) return <>'Submitting...'</>;
+  if (mutationLoding) return <>'Submitting...' <Loading/></>;
   if (mutationError) return <>`Submission error! ${mutationError.message}`</>;
   if ( mutationData) console.log(mutationData)
 

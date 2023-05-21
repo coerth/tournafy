@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { IS_LOGGED_IN, LOGGED_IN_PLAYER } from '../../graphql/query';
 import { loggedInPlayerVar } from '../client/cache';
 import { Player } from '../types/types';
+import Loading from './Loading';
 
 const FrontPage = () => {
   const navigate = useNavigate();

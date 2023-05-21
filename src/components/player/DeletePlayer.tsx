@@ -2,6 +2,7 @@ import React from 'react'
 import {useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { DELETE_PLAYER } from '../../../graphql/mutations/playerMutation';
+import Loading from '../Loading';
 
 const DeletePlayer = () => {
     const [ID, setID] = useState("")
@@ -9,7 +10,7 @@ const DeletePlayer = () => {
     const [mutateFunction, { data, loading, error }] = useMutation(DELETE_PLAYER,{
         //refetchQueries: [GET_PLAYERS]
     }); //mutateFunction is the function to call for server update. refetchQueries is the list of queries to refetch after the mutation is done. And if they were used with useQuery, they will be updated with the new data.
-    if (loading) return <>'Submitting...'</>;
+    if (loading) return <>'Submitting...' <Loading/></>;
     if (error) return <>`Submission error! ${error.message}`</>;
 
     const deletePlayer = (event: React.FormEvent<HTMLFormElement>) => {

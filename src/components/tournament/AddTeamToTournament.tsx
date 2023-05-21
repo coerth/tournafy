@@ -3,6 +3,7 @@ import { GET_TOURNAMENTS, GET_TOURNAMENTS_AND_TEAMS } from '../../../graphql/que
 import { useQuery, useMutation} from '@apollo/client';
 import Dropdown from '../Dropdown';
 import { ADD_TEAM_TO_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation';
+import Loading from '../Loading';
 
 
 const AddTeamToTournament = () => {
@@ -21,9 +22,9 @@ const AddTeamToTournament = () => {
         
     }
 
-    if (loading) return <p>Loading...</p>
+    if (loading) return <Loading/>
     if (error) return <p>Error : {error.message}</p>; 
-    if (mutationLoading) return <>'Submitting...'</>;
+    if (mutationLoading) return <>'Submitting...' <Loading/></>;
     if (mutationError) return <>`Submission error! ${mutationError.message}`</>;
 
     const onTournamentChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

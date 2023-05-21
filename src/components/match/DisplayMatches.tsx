@@ -4,6 +4,7 @@ import DisplayMatch from './DisplayMatch'
 import {GET_MATCHES} from '../../../graphql/query'
 import { useQuery} from '@apollo/client';
 import { useNavigate } from 'react-router-dom'
+import Loading from '../Loading';
 
 
 const DisplayMatches = () => {
@@ -20,7 +21,7 @@ const DisplayMatches = () => {
     setShowMatch(!showMatch)
   }
   
-  if (loading) return <p>Loading...</p>
+  if (loading) return <Loading/>
   if (error) return <p>Error : {error.message}</p>; 
 
     return (

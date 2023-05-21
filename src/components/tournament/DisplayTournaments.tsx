@@ -7,6 +7,7 @@ import { useNavigate} from 'react-router-dom'
 import TournamentTable from './TournamentTable';
 import { tournamentGameTypes, tournamentInitialState } from '../../types/initialState';
 import {useLocation} from 'react-router-dom';
+import Loading from '../Loading';
 
 
 
@@ -39,7 +40,7 @@ if(location.state)
     setShowTournament(!showTournament) 
   }
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <Loading/>
   if (error) return <p>Error : {error.message}</p>; 
 
   const onFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
