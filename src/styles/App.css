@@ -76,20 +76,20 @@ table{
 }
 
 #img1{
-  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\apex2.png");
+  background-image: url("../src/assets/apex2.png");
   
 }
 
 #img2{
-  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\csgo2.png");
+  background-image: url("../src/assets/csgo2.png");
 }
 
 #img3{
-  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\lol3.png");
+  background-image: url("../src/assets/lol3.png");
 }
 
 #img4{
-  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\valorant.png");
+  background-image: url("../src/assets/valorant.png");
 }
 
 #img5{
