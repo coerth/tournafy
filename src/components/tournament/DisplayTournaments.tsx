@@ -20,9 +20,12 @@ const DisplayTournaments = () => {
   
   useEffect(() => {
 
-    console.log(location.state.game)
-    setSelectedFilter(location.state.game)
-    setFilter(true)
+if(location.state)
+{
+  setSelectedFilter(location.state.game)
+  setFilter(true)
+}
+
 
   }, [location])
   
