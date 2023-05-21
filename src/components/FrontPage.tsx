@@ -19,39 +19,30 @@ const FrontPage = () => {
         <div className='frontpage-top-div'>
         <h1 className='frontpage-headline'>Tournafy</h1>
         <p>Your go-to place for quality tournament running!</p>
-        <div className='frontpage-menu' id='img1'>
+        <div className='frontpage-menu' id='img1' onClick={()=>navigate("/tournament", {state: {game: "Apex Legends"}})}>
         <section >
-          <h1>Apex Legdends</h1>
-          <p>See all Tournaments</p>
-          <button onClick={()=>navigate("/tournament")}>Go to Tournaments</button>
+          <h1>Apex Legends</h1>
+
         </section>
         </div>
-        <div className='frontpage-menu' id='img2'>
+        <div className='frontpage-menu' id='img2' onClick={()=>navigate("/tournament", {state: {game: "Counter Strike"}})}>
         <section >
         <h1>CS:GO</h1>
-        <p> See all Matches</p>
-        <button onClick={()=>navigate("/match")}>Go to Matches</button>
         </section>
         </div>
-        <div className='frontpage-menu' id='img3'>
+        <div className='frontpage-menu' id='img3' onClick={()=>navigate("/tournament", {state: {game: "League of Legends"}})}>
         <section >
         <h1>League of Legends</h1>
-        <p>See all tournaments for League of Legends</p>
-        <button onClick={()=>navigate("/team")}>Go to Teams</button>
         </section>
         </div>
-        <div className='frontpage-menu' id='img4'>
+        <div className='frontpage-menu' id='img4' onClick={()=>navigate("/tournament", {state: {game: "Valorant"}})}>
         <section >
         <h1>Valorant</h1>
-        <p>See all tournaments for League of Legends</p>
-        <button onClick={()=>navigate("/team")}>Go to Teams</button>
         </section>
         </div>
-        <div className='frontpage-menu' id='img5' >
+        <div className='frontpage-menu' id='img5' onClick={()=>navigate("/tournament", {state: {game: "Rocket League"}})}>
         <section >
         <h1>Rocket League</h1>
-        <p>See all tournaments for League of Legends</p>
-        <button onClick={()=>navigate("/team")}>Go to Teams</button>
         </section>
         </div>
       </div>

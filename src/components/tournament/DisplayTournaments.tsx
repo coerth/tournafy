@@ -6,6 +6,7 @@ import DisplayTournament from './DisplayTournament';
 import { useNavigate} from 'react-router-dom'
 import TournamentTable from './TournamentTable';
 import { tournamentGameTypes, tournamentInitialState } from '../../types/initialState';
+import {useLocation} from 'react-router-dom';
 
 
 
@@ -15,6 +16,16 @@ const DisplayTournaments = () => {
   const[selectedFilter, setSelectedFilter] = useState("All")
   const [tournament, setTournament] = useState<Tournament>(tournamentInitialState);
   const [showTournament, setShowTournament] = useState(false)
+  const location = useLocation()
+  
+  useEffect(() => {
+
+    console.log(location.state.game)
+    setSelectedFilter(location.state.game)
+    setFilter(true)
+
+  }, [location])
+  
   
   
   const { loading, error, data } = useQuery(GET_TOURNAMENTS);
@@ -23,7 +34,6 @@ const DisplayTournaments = () => {
     let index = data.tournaments?.findIndex((tournament: Tournament) => tournament._id === id)
     setTournament(data.tournaments[index])
     setShowTournament(!showTournament) 
-
   }
 
   if (loading) return <p>Loading...</p>
