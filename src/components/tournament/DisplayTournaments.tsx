@@ -4,8 +4,9 @@ import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { useQuery} from '@apollo/client';
 import DisplayTournament from './DisplayTournament';
 import { useNavigate } from 'react-router-dom'
-import { tournamentGameTypes } from '../../types/initialState';
 import TournamentTable from './TournamentTable';
+import { tournamentGameTypes, tournamentInitialState } from '../../types/initialState';
+
 
 
 
@@ -13,8 +14,17 @@ const DisplayTournaments = () => {
   const[filter, setFilter] = useState(false)
   const[selectedFilter, setSelectedFilter] = useState("All")
   const[showSelect, setShowSelect] = useState(true);
+  const [tournament, setTournament] = useState<Tournament>(tournamentInitialState);
+  const [showTournament, setShowTournament] = useState(false)
   
   const { loading, error, data } = useQuery(GET_TOURNAMENTS);
+
+  function seeTournament(id: string) {
+    let index = data.tournaments?.findIndex((tournament: Tournament) => tournament._id === id)
+    setTournament(data.tournaments[index])
+    setShowTournament(!showTournament) 
+
+  }
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error : {error.message}</p>; 
@@ -36,9 +46,11 @@ const DisplayTournaments = () => {
   }
 
     return (
-    <div className='select-tournament'>
+      <>
+      <div>
 
-      {showSelect && 
+      {!showTournament && 
+    <div className='select-tournament'>
       
       <div>
         <select
@@ -58,11 +70,16 @@ const DisplayTournaments = () => {
               ))}
           </select>
         </div>
+
+      <TournamentTable seeTournament={seeTournament} tournaments={filter ? data.tournaments.filter((t: Tournament): t is Tournament => t.tournamentGame === selectedFilter ) : data.tournaments }/>
+      </div>
       }
 
-      <TournamentTable showSelect={setShowSelect} tournaments={filter ? data.tournaments.filter((t: Tournament): t is Tournament => t.tournamentGame === selectedFilter ) : data.tournaments }/>
-
+      {showTournament &&
+<DisplayTournament tournament={tournament} setShowTournament={setShowTournament}/>
+}
     </div>
+</>
   )
 }
 

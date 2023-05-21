@@ -8,26 +8,17 @@ import { stringToDate } from '../../utility/date';
 
 type Props = {
     tournaments: Tournament[]
-    showSelect: Function
+    seeTournament: Function
 }
-const TournamentTable:React.FC<Props> = ({tournaments}: {tournaments: Tournament[]}, showSelect): JSX.Element => {
+const TournamentTable:React.FC<Props> = ({tournaments, seeTournament}): JSX.Element => {
     const navigate = useNavigate();
-const [tournament, setTournament] = useState<Tournament>(tournamentInitialState);
-  const [showTournament, setShowTournament] = useState(false)
- 
 
-  function seeTournament(id: string) {
-    let index = tournaments?.findIndex((tournament: Tournament) => tournament._id === id)
-    setTournament(tournaments[index])
-    setShowTournament(!showTournament) 
-    showSelect(false)
-  }
 
   
 
   return (
     <div className='outer-table'>
-      {!showTournament &&
+
       <div >
         <table>
             <thead>
@@ -62,11 +53,9 @@ const [tournament, setTournament] = useState<Tournament>(tournamentInitialState)
         </div>
 
         </div>
-}
 
-{showTournament &&
-<DisplayTournament tournament={tournament} setShowTournament={setShowTournament}/>
-}
+
+
     </div>
   )
 }
