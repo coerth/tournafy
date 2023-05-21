@@ -13,7 +13,6 @@ import { tournamentGameTypes, tournamentInitialState } from '../../types/initial
 const DisplayTournaments = () => {
   const[filter, setFilter] = useState(false)
   const[selectedFilter, setSelectedFilter] = useState("All")
-  const[showSelect, setShowSelect] = useState(true);
   const [tournament, setTournament] = useState<Tournament>(tournamentInitialState);
   const [showTournament, setShowTournament] = useState(false)
   
