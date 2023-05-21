@@ -47,7 +47,7 @@ const FrontPage = () => {
         <button onClick={()=>navigate("/team")}>Go to Teams</button>
         </section>
         </div>
-        <div className='frontpage-menu' id='img5'>
+        <div className='frontpage-menu' id='img5' >
         <section >
         <h1>Rocket League</h1>
         <p>See all tournaments for League of Legends</p>
