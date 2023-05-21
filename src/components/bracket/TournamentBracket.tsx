@@ -80,7 +80,7 @@ const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element
 
 
   return (
-    <div>
+    <div className="outer-bracket-div">
     { matches &&
     <div className="bracket">
 

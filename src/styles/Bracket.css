@@ -7,7 +7,8 @@ body {
 
 .bracket {
 	display: flex;
-	width: 1000px;
+
+	justify-content: center;
 }
 
 
@@ -18,6 +19,7 @@ body {
 	flex-direction: column;
 	justify-content: space-around;
 }
+
 
 .match {
 	align-self: center;
@@ -34,7 +36,12 @@ body {
 }
 
 .return-button{
-	align-self: center;
+	margin: 0;
+  position: absolute;
+  left: 4%;
+  top: 8%;
+  -ms-transform: translate( -50%);
+  transform: translate( -50%);
 }
 
 .bracket-button{

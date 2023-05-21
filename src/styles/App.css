@@ -53,7 +53,8 @@ table{
 .frontpage-top-div{
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 100%;
+  height: 100%;
   text-align: center;
 }
 
@@ -64,9 +65,35 @@ table{
   border-color: white;
   border-style: solid;
   border-radius: 25px;
-  min-height: 200px;
-  min-width: 200px;
+  height: 800px;
+  width: 379px;
+  background-size: 100% 100%;
+  opacity: 0.5;
+}
+
+.frontpage-menu:hover {
+  opacity: 1.0;
+}
+
+#img1{
+  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\apex2.png");
   
+}
+
+#img2{
+  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\csgo2.png");
+}
+
+#img3{
+  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\lol3.png");
+}
+
+#img4{
+  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\valorant.png");
+}
+
+#img5{
+  background-image: url("C:\Users\Betul\Desktop\Skole\tournafy\src\assets\rocket_league.png");
 }
 
 .container {

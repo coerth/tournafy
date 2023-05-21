@@ -3,7 +3,7 @@ import {Tournament, Match, Team, Player} from '../../types/types'
 import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { useQuery} from '@apollo/client';
 import DisplayTournament from './DisplayTournament';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import TournamentTable from './TournamentTable';
 import { tournamentGameTypes, tournamentInitialState } from '../../types/initialState';
 
@@ -15,6 +15,7 @@ const DisplayTournaments = () => {
   const[selectedFilter, setSelectedFilter] = useState("All")
   const [tournament, setTournament] = useState<Tournament>(tournamentInitialState);
   const [showTournament, setShowTournament] = useState(false)
+  
   
   const { loading, error, data } = useQuery(GET_TOURNAMENTS);
 

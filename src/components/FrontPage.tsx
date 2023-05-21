@@ -13,31 +13,44 @@ const FrontPage = () => {
   const {data} = useQuery(LOGGED_IN_PLAYER);
   if(player) console.log(JSON.parse(player? player : ""));
 
-  
 
   return (
     <div>
         <div className='frontpage-top-div'>
         <h1 className='frontpage-headline'>Tournafy</h1>
         <p>Your go-to place for quality tournament running!</p>
-        <div className='frontpage-menu'>
+        <div className='frontpage-menu' id='img1'>
         <section >
-          <h3>Tournaments</h3>
+          <h1>Apex Legdends</h1>
           <p>See all Tournaments</p>
           <button onClick={()=>navigate("/tournament")}>Go to Tournaments</button>
         </section>
         </div>
-        <div className='frontpage-menu'>
+        <div className='frontpage-menu' id='img2'>
         <section >
-        <h3>Matches</h3>
+        <h1>CS:GO</h1>
         <p> See all Matches</p>
         <button onClick={()=>navigate("/match")}>Go to Matches</button>
         </section>
         </div>
-        <div className='frontpage-menu'>
+        <div className='frontpage-menu' id='img3'>
         <section >
-        <h3>Teams</h3>
-        <p>See all Teams</p>
+        <h1>League of Legends</h1>
+        <p>See all tournaments for League of Legends</p>
+        <button onClick={()=>navigate("/team")}>Go to Teams</button>
+        </section>
+        </div>
+        <div className='frontpage-menu' id='img4'>
+        <section >
+        <h1>Valorant</h1>
+        <p>See all tournaments for League of Legends</p>
+        <button onClick={()=>navigate("/team")}>Go to Teams</button>
+        </section>
+        </div>
+        <div className='frontpage-menu' id='img5'>
+        <section >
+        <h1>Rocket League</h1>
+        <p>See all tournaments for League of Legends</p>
         <button onClick={()=>navigate("/team")}>Go to Teams</button>
         </section>
         </div>
@@ -45,8 +58,7 @@ const FrontPage = () => {
     </div>
   )
 
-  function goToTournaments() {
-}
+
 }
 
 export default FrontPage

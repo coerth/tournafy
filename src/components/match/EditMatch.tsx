@@ -43,7 +43,7 @@ export const EditMatch: React.FC<EditMatchProps> = ({ match }) => {
   if ( mutationData) console.log(mutationData)
 
   return (
-    <div>
+    <div className='modal-outer-div'>
       <h1 className='h-modal'>Edit Match</h1>
 
       <form onSubmit={handleSubmit}>
