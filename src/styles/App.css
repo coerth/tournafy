@@ -78,7 +78,22 @@ table{
   width: 379px;
   background-size: 100% 100%;
   opacity: 0.5;
+  
 }
+
+.frontpage-menu h1{
+  background-color: rgba(0,0,0,0.5);
+  border: 1px;
+  border-style:  solid;
+  border-color: white;
+  border-radius: 25px;
+  width: 250px;
+  text-align: center;
+  margin: auto;
+  margin-top: 5%;
+ 
+}
+
 
 .frontpage-menu:hover {
   opacity: 1.0;
