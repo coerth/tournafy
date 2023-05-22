@@ -39,8 +39,50 @@ query GetTeams {
     }
   }
 }
-
   `
+
+  export const GET_TEAMS_LIST = gql `
+  query Teams {
+    teams {
+      _id
+      name
+      players {
+        _id
+      }
+    }
+  }`
+
+  export const GET_TEAM_DETAILED = gql `
+  query Team($teamId: ID!) {
+    team(id: $teamId) {
+      _id
+      name
+      tournaments {
+        _id
+        name
+        endDate
+        maxTeams
+        minTeams
+        startDate
+        tournamentGame
+        tournamentType
+      }
+      captain {
+        _id
+        email
+        gamerTag
+        name
+        phone
+      }
+      players {
+        _id
+        email
+        gamerTag
+        name
+        phone
+      }
+    }
+  }`
 
   export  const GET_MATCHES = gql `
     

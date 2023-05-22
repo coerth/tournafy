@@ -3,20 +3,41 @@ import '../../styles/App.css'
 import {Team, Tournament} from '../../types/types'
 import DisplayPlayers from '../player/DisplayPlayers'
 import { stringToDate } from '../../utility/date'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useQuery} from '@apollo/client';
+import { GET_TEAM_DETAILED } from '../../../graphql/query'
+import Loading from '../general/Loading'
+import { teamInitialState } from '../../types/initialState'
+
 
 type Props = {
-    team: Team
+    teamId: string
     setShowTeam: Function
 }
 
-const DisplayTeam:React.FC<Props> = ({team, setShowTeam}): JSX.Element => {
+const DisplayTeam:React.FC<Props> = ({teamId, setShowTeam}): JSX.Element => {
+    const [team, setTeam] = useState<Team>(teamInitialState)
 
+    const { loading, error, data } = useQuery(GET_TEAM_DETAILED, {
+      variables: {teamId: teamId},
+    });
+    
     useEffect(() => {
-    }, [])
+        if(data)
+        {
+        setTeam(data.team)
+        }
+
+    }, [teamId])
+    
     
     function returnToTeams() {
         setShowTeam(false)
     }
+
+  if (loading) return <Loading/>
+  if (error) return <p>Error : {error.message}</p>; 
+
 
     return (
     <div>
