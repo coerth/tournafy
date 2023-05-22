@@ -29,7 +29,6 @@ function App() {
       <Route path='/' element={<FrontPage/>} />
       <Route path="/team" element={<DisplayTeams />} />
       <Route path="/tournament" element={<DisplayTournament />} />
-      <Route path="/match" element={<DisplayMatches />} />
       <Route path="/admin" element={<Adminpage/>}/>
       </Routes>
       </BrowserRouter>

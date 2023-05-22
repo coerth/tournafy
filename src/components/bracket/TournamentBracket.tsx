@@ -31,8 +31,6 @@ const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element
     data: mutationData } ] = useMutation(UPDATE_MATCH,{
     refetchQueries: [GET_TOURNAMENTS, GET_MATCHES]
 });
-  
-  if (!matches) return <p>No Bracket yet...</p>
 
    function convertMatchesToHashMap(matches: Match[]) {
       let newBracket = new Map<number, Match[]>()
@@ -81,7 +79,11 @@ const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element
 
   return (
     <div className="outer-bracket-div">
-    { matches &&
+      {!matches || matches.length == 0 &&
+       <p>No Bracket yet...</p>
+       }
+
+    { matches!.length > 0 &&
     <div className="bracket">
 
       {[...bracket.keys()].map( key => {

@@ -11,7 +11,6 @@ const DisplayPlayers = ({players}: {players: Player[]}) => {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Gamer Tag</th>
                         <th>Email</th>
@@ -21,7 +20,6 @@ const DisplayPlayers = ({players}: {players: Player[]}) => {
                 <tbody>
             {players?.map((players: Player) => (
                     <tr key={players._id}>
-                        <td>{players._id}</td>
                         <td>{players.name}</td>
                         <td>{players.gamerTag}</td>
                         <td>{players?.email}</td>

@@ -26,13 +26,13 @@ const DisplayTeams = () => {
   if (error) return <p>Error : {error.message}</p>; 
 
     return (
-    <div>
+    <div className='select-tournament'>
     {!showTeam &&
     <div>
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+
                     <th>Name</th>
                     <th>Captain</th>
                     <th>Players</th>
@@ -41,7 +41,6 @@ const DisplayTeams = () => {
             <tbody>
             {data.teams.map( (team:Team ) => (
             <tr key={team._id}>
-              <td>{team._id}</td>
               <td>{team.name}</td>
               <td>{team.captain.name}</td>
               <td>{team.players?.length}</td>
