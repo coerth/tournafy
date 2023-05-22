@@ -29,7 +29,7 @@ const DisplayMatches :React.FC<Props> = ({matches}): JSX.Element => {
   if (error) return <p>Error : {error.message}</p>; 
 
     return (
-    <div>
+    <div className='select-tournament'>
     {!showMatch &&
     <div>
         <table>
@@ -42,8 +42,8 @@ const DisplayMatches :React.FC<Props> = ({matches}): JSX.Element => {
             <tbody>
             {matches!.map( (match: Match ) => (
             <tr key={match._id}>
-              <td>{match.score![0]} {match.score![1]}</td>
-              <td>{match.teams![0]?.name} {match.teams![1]?.name}</td>
+              <td>{match.score![0]} - {match.score![1]}</td>
+              <td>{match.teams![0]?.name} - {match.teams![1]?.name}</td>
               {/* <td><button onClick={() => seeMatch(match._id? match._id : "")}>See Match</button></td> */}
             </tr>
         ))}
