@@ -31,6 +31,12 @@ query GetTeams {
       email
       phone
     }
+    tournaments {
+      name
+      startDate
+      endDate
+      tournamentGame
+    }
   }
 }
 
