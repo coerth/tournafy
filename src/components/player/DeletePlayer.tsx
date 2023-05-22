@@ -2,7 +2,7 @@ import React from 'react'
 import {useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { DELETE_PLAYER } from '../../../graphql/mutations/playerMutation';
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 const DeletePlayer = () => {
     const [ID, setID] = useState("")

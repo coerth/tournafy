@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { playerInitialState } from '../../types/initialState';
 import { CREATE_PLAYER } from '../../../graphql/mutations/playerMutation';
 import {useMutation } from '@apollo/client';
-import { GET_PLAYERS } from '../../../graphql/query';
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 
 const AddPlayer = () => {

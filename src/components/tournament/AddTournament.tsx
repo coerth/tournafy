@@ -5,7 +5,7 @@ import { CREATE_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation
 import {useMutation } from '@apollo/client';
 import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { convertFormStringToDate, dateFormatForm } from '../../utility/date';
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 
 const AddTournament = () => {

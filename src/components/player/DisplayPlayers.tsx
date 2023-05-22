@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import {GET_PLAYERS} from '../../../graphql/query'
-import { useQuery} from '@apollo/client';
 import {Player} from '../../types/types'
 
 const DisplayPlayers = ({players}: {players: Player[]}) => {

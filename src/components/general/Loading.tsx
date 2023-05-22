@@ -1,7 +1,4 @@
-import React from 'react'
-import { render } from "react-dom";
-
-import { Dots, Spinner } from "react-activity";
+import {Spinner } from "react-activity";
 import "react-activity/dist/library.css";
 
 const Loading = () => {

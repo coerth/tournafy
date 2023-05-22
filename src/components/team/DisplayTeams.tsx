@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import {Team, Player} from '../../types/types'
+import {Team} from '../../types/types'
 import DisplayTeam from './DisplayTeam'
 import {GET_TEAMS} from '../../../graphql/query'
 import { useQuery} from '@apollo/client';
 import { teamInitialState } from '../../types/initialState';
 import { useNavigate } from 'react-router-dom'
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 
 const DisplayTeams = () => {

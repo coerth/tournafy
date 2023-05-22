@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { GET_TOURNAMENTS, GET_TOURNAMENTS_AND_TEAMS } from '../../../graphql/query';
 import { useQuery, useMutation} from '@apollo/client';
-import Dropdown from '../Dropdown';
+import Dropdown from '../general/Dropdown';
 import { ADD_TEAM_TO_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation';
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 
 const AddTeamToTournament = () => {

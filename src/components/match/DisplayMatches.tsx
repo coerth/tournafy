@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import {Match, Team, Player} from '../../types/types'
+import {Match, Team} from '../../types/types'
 import DisplayMatch from './DisplayMatch'
 import {GET_MATCHES} from '../../../graphql/query'
 import { useQuery} from '@apollo/client';
 import { useNavigate } from 'react-router-dom'
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 
 type Props = {

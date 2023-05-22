@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {Tournament, Match, Team, Player} from '../../types/types'
+import {Tournament} from '../../types/types'
 import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { useQuery} from '@apollo/client';
 import DisplayTournament from './DisplayTournament';
-import { useNavigate} from 'react-router-dom'
 import TournamentTable from './TournamentTable';
 import { tournamentGameTypes, tournamentInitialState } from '../../types/initialState';
 import {useLocation} from 'react-router-dom';
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 
 

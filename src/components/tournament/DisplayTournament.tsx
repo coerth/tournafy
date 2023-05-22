@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import '../../styles/App.css'
 import {Tournament} from '../../types/types'
-import DisplayTournaments from '../tournament/DisplayTournaments'
 import TournamentBracket from '../bracket/TournamentBracket'
 import DisplayMatches from '../match/DisplayMatches'
 

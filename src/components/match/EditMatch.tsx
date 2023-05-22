@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation} from '@apollo/client';
 import { UPDATE_MATCH } from '../../../graphql/mutations/matchMutation';
 import { GET_MATCHES, GET_TOURNAMENTS } from '../../../graphql/query';
 import Dropdown from '../general/Dropdown';

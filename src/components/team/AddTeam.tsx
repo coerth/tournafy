@@ -4,7 +4,7 @@ import { teamInputInitialState } from '../../types/initialState';
 import { CREATE_TEAM } from '../../../graphql/mutations/teamMutation';
 import {useMutation } from '@apollo/client';
 import { GET_TEAMS } from '../../../graphql/query';
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 
 const AddTeam = () => {

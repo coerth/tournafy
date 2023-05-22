@@ -1,8 +1,5 @@
-import {useState} from 'react'
-import {Tournament, Match, Team, Player} from '../../types/types'
-import { tournamentGameTypes, tournamentInitialState } from '../../types/initialState';
+import {Tournament} from '../../types/types'
 import { useNavigate } from 'react-router-dom'
-import DisplayTournament from './DisplayTournament';
 import { stringToDate } from '../../utility/date';
 
 
