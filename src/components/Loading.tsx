@@ -6,8 +6,10 @@ import "react-activity/dist/library.css";
 
 const Loading = () => {
   return (
-    <div>
-        <Spinner/>
+    <div className='loading_overlay'>
+    <div className='loading'>
+        <Spinner size={50}/>
+    </div>
     </div>
   )
 }
