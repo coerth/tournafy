@@ -7,7 +7,11 @@ import { useNavigate } from 'react-router-dom'
 import Loading from '../Loading';
 
 
-const DisplayMatches = () => {
+type Props = {
+  matches: Match[] | undefined;
+};
+
+const DisplayMatches :React.FC<Props> = ({matches}): JSX.Element => {
   const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_MATCHES);
@@ -31,23 +35,21 @@ const DisplayMatches = () => {
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Score</th>
                     <th>Teams</th>
                 </tr>
             </thead>
             <tbody>
-            {data.matches.map( (match: Match ) => (
+            {matches!.map( (match: Match ) => (
             <tr key={match._id}>
-              <td>{match._id}</td>
-              <td>{match.score[0]} {match.score[1]}</td>
-              <td>{match.teams[0]?.name} {match.teams[1]?.name}</td>
-              <td><button onClick={() => seeMatch(match._id? match._id : "")}>See Match</button></td>
+              <td>{match.score![0]} {match.score![1]}</td>
+              <td>{match.teams![0]?.name} {match.teams![1]?.name}</td>
+              {/* <td><button onClick={() => seeMatch(match._id? match._id : "")}>See Match</button></td> */}
             </tr>
         ))}
             </tbody>
         </table>
-        <button onClick={()=>navigate(-1)}>Return</button>
+        {/* <button onClick={()=>navigate(-1)}>Return</button> */}
 
         </div>
 }
