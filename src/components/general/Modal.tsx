@@ -1,5 +1,5 @@
 import React from 'react'
-import { modalType } from '../types/interfaces'
+import { modalType } from '../../types/interfaces'
 
 const Modal = ({isOpen, toggle, children}: modalType) => {
   return (

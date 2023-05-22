@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_MATCH } from '../../../graphql/mutations/matchMutation';
 import { GET_MATCHES, GET_TOURNAMENTS } from '../../../graphql/query';
-import Dropdown from '../Dropdown';
+import Dropdown from '../general/Dropdown';
 import '../../styles/Modal.css'
 import { Match } from '../../types/types';
-import Loading from '../Loading';
+import Loading from '../general/Loading';
 
 type EditMatchProps = {
   match: Match

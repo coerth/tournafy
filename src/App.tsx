@@ -1,5 +1,5 @@
-import Header from './components/header'
-import { BrowserRouter, Routes, Route, RouterProvider, Navigate } from 'react-router-dom'
+import Header from './components/Header'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './styles/App.css'
 import DisplayTeams from './components/team/DisplayTeams'
 import DisplayTournament from './components/tournament/DisplayTournaments'

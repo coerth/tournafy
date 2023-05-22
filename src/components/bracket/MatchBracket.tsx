@@ -1,7 +1,7 @@
 import React from 'react'
 import { Match } from '../../types/types'
-import Modal from "../Modal";
-import useModal from "../hooks/useModal";
+import Modal from "../general/Modal";
+import useModal from "../../hooks/useModal";
 import { EditMatch } from '../match/EditMatch';
 
 
