@@ -34,7 +34,7 @@ function seeTeam(id: string) {
     
   }
   
-  const [mutateFunction, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(DELETE_TEAM, {refetchQueries: [GET_TEAMS]});
+  const [mutateFunction, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(DELETE_TEAM, {refetchQueries: [GET_TEAMS_LIST]});
 if (mutationLoading) return <>'Submitting...' <Loading/></>;
 if (mutationError) return <>`Submission error! ${mutationError.message}`</>;
 

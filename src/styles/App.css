@@ -15,6 +15,10 @@ th, td {
   
 }
 
+.p-error{
+  color: black;
+}
+
 tbody tr:nth-child(odd) {
   background-color: #0f5d6464;
   color: #fff;
