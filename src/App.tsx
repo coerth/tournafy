@@ -22,7 +22,7 @@ function App() {
       <Routes>
       <Route path='/' element={<FrontPage/>} />
       <Route path="/team" element={<DisplayTeams />} />
-      <Route path="/admin"  element={data.adminAccess ? <Adminpage/> : <Navigate to="/" replace={true} />}/>
+      <Route path="/admin" element={hasAccessVar() ? <Adminpage/> : <Navigate to="/" replace={true} />}/>
       <Route path="/tournament" element={<DisplayTournament />} />
       <Route path="*" element={<Navigate to="/" replace={true} />}
     />
