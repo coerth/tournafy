@@ -13,17 +13,18 @@ const LogIn = () => {
 
   const [logIn, setLogIn] = useState(logInInitialState);
 
-  const [mutateFunction, { data, loading, error }] = useMutation(LOG_IN, {}); //mutateFunction is the function to call for server update. refetchQueries is the list of queries to refetch after the mutation is done. And if they were used with useQuery, they will be updated with the new data.
+  const [mutateFunction, { data, loading, error }] = useMutation(LOG_IN, 
+    {onCompleted(data) {
+      localStorage.setItem("auth:token", data.sign_in.token);
+      localStorage.setItem("player", JSON.stringify(data.sign_in.player));
+      hasAccessVar(data.sign_in.adminAccess)
+      isLoggedInVar(true);
+      loggedInPlayerVar(data.sign_in.player);
+      console.log(`fra Graghql: ${data.sign_in.adminAccess}  fra cache: ${hasAccessVar()}`)
+
+  }}); //mutateFunction is the function to call for server update. refetchQueries is the list of queries to refetch after the mutation is done. And if they were used with useQuery, they will be updated with the new data.
   if (loading) return <>'Submitting...'</>;
   if (error) return <>`Submission error! ${error.message}`</>;
-  if (data && data.sign_in.token && data.sign_in.player) {
-    localStorage.setItem("auth:token", data.sign_in.token);
-    localStorage.setItem("player", JSON.stringify(data.sign_in.player));
-    hasAccessVar(data.sign_in.adminAccess)
-    isLoggedInVar(true);
-    loggedInPlayerVar(data.sign_in.player);
-    console.log(hasAccessVar())
-  }
 
   const signIn = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

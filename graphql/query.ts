@@ -163,6 +163,13 @@ export const LOGGED_IN_PLAYER = gql `
   }
 `
 
+export const ADMIN_ACCESS = gql `
+query hasAccess
+  {
+    hasAccess @client
+  }
+`
+
 export const GET_TOURNAMENT_MATCH = gql `
     
 query Tournament($tournamentId: ID!) {

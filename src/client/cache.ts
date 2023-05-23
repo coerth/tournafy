@@ -14,7 +14,7 @@ export const cache = new InMemoryCache({
                 return loggedInPlayerVar();
               },
             },
-            hasAcces: {
+            hasAccess: {
               read() {
                 return hasAccessVar()
               }
