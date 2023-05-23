@@ -33,14 +33,26 @@ body {
 .team {
 	color: #fff;
 	padding: 10px 8px;
-	background-color: #0c5b66;
+	border: 10px 8px ;
+	border-color: #0c5b66;
+	background-color: #0c5c6680;
+	border-style: solid;
 }
 
 .teamWinner{
 	color: #fff;
 	padding: 10px 8px;
-	background-color: #48c09a;
+	background-color: #0f7481;
+	border: 10px 8px ;
+	border-color: #16aec2;
+	border-style: solid;
+	background-color: url("../src/assets/trophy-solid.png");
 }
+
+
+.trophy{
+	background-color: url("../src/assets/trophy-solid.png");
+  }
 
 .return-button{
 	margin: 0;

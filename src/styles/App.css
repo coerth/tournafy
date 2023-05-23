@@ -128,6 +128,7 @@ table{
   background-image: url("../src/assets/rocket_league.png");
 }
 
+
 .container {
   display: flex;
   justify-content: space-between;

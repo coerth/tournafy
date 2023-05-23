@@ -49,6 +49,7 @@ const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Elem
             }
             <div className={checkUndefinedAndWinner(match.teams![0])}>{match.teams![0] ? match.teams![0].name : "Stage not active"}</div>
             <div className={checkUndefinedAndWinner(match.teams![1])}>{match.teams![1] ? match.teams![1].name : "Stage not active"}</div>
+
         </div>
         )
 }
