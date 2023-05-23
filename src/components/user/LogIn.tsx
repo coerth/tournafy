@@ -7,6 +7,7 @@ import useModal from "../../hooks/useModal";
 import SignUp from "./SignUp";
 import "../../styles/Modal.css";
 import { isLoggedInVar, loggedInPlayerVar, hasAccessVar } from "../../client/cache";
+import ErrorModal from "../general/ErrorModal";
 
 const LogIn = () => {
   const { isOpen, toggle } = useModal();
@@ -15,7 +16,8 @@ const LogIn = () => {
 
   const [mutateFunction, { data, loading, error }] = useMutation(LOG_IN, {}); //mutateFunction is the function to call for server update. refetchQueries is the list of queries to refetch after the mutation is done. And if they were used with useQuery, they will be updated with the new data.
   if (loading) return <>'Submitting...'</>;
-  if (error) return <>`Submission error! ${error.message}`</>;
+  //if (error) return <ErrorModal error={error}/>
+  if (error) return <p className="p-error">Submission error! ${error.message}</p>;
   if (data && data.sign_in.token && data.sign_in.player) {
     localStorage.setItem("auth:token", data.sign_in.token);
     localStorage.setItem("player", JSON.stringify(data.sign_in.player));

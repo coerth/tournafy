@@ -20,7 +20,7 @@ function App() {
       <Route path="/team" element={<DisplayTeams />} />
       <Route path="/tournament" element={<DisplayTournament />} />
       <Route path="/admin"  element={ hasAccessVar() ? <Adminpage /> : <Navigate to='/' replace />}/>
-      <Route path="*" element={<Navigate to='/' replace />} />
+      {/* <Route path="*" element={<Navigate to='/' replace />} /> */}
       </Routes>
       </BrowserRouter>
 
