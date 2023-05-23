@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { inputTournamentGameTypes, tournamentInputInitialState } from '../../types/initialState';
-import { CREATE_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation';
+import { CREATE_TOURNAMENT, GET_TOURNAMENT_LIST } from '../../../graphql/mutations/tournamentMutation';
 import {useMutation } from '@apollo/client';
 import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { convertFormStringToDate, dateFormatForm } from '../../utility/date';
@@ -12,7 +12,7 @@ const AddTournament = () => {
     const [tournament, setTournament] = useState(tournamentInputInitialState);
 
     const [mutateFunction, { data, loading, error }] = useMutation(CREATE_TOURNAMENT,{
-        refetchQueries: [GET_TOURNAMENTS]
+        refetchQueries: [GET_TOURNAMENT_LIST]
     }); //mutateFunction is the function to call for server update. refetchQueries is the list of queries to refetch after the mutation is done. And if they were used with useQuery, they will be updated with the new data.
     if (loading) return <>'Submitting...' <Loading/></>;
     if (error) return <>`Submission error! ${error.message}`</>;
@@ -26,6 +26,11 @@ const AddTournament = () => {
     <div>
         <form onSubmit={createNewTournament}>
           <h1>Add Tournament</h1>
+
+          {data &&
+            <h2>Tournament added!</h2>
+         }
+
         <br/>
         Tournament Name
         <br/>

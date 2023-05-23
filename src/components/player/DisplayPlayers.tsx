@@ -6,20 +6,12 @@ import { GET_PLAYERS } from '../../../graphql/query';
 import { useState } from 'react';
 import { hasAccessVar } from '../../client/cache';
 
-const DisplayPlayers = ({players}: {players: Player[]}) => {
-    const [ID, setID] = useState("")
-    
-    const [mutateFunction, { data, loading, error }] = useMutation(DELETE_PLAYER,{
-        refetchQueries: [GET_PLAYERS]
-    });
-    if (loading) return <>'Submitting...' <Loading/></>;
-    if (error) return <>`Submission error! ${error.message}`</>;
+type Props = {
+    players: Player[],
+    removePlayer: Function
+}
 
-    const deletePlayer = (playerId: string) => {
-        console.log(playerId);
-        setID(playerId);
-        mutateFunction({variables: { deletePlayerId: playerId }}); 
-    }
+const DisplayPlayers:React.FC<Props> = ({players, removePlayer}): JSX.Element => {
   
     return (
         <div>
@@ -41,7 +33,7 @@ const DisplayPlayers = ({players}: {players: Player[]}) => {
                         <td>{player?.phone}</td>
                         {
                             hasAccessVar() &&
-                        <td><button onClick={() => deletePlayer(player._id!)}>Delete</button></td>
+                        <td><button onClick={() => removePlayer(player._id!)}>Remove</button></td>
                         }
                     </tr>
             ))}

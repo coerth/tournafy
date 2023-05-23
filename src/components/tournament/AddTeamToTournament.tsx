@@ -18,8 +18,7 @@ const AddTeamToTournament = () => {
     });
 
     const AddTeamToTournament = () => {
-        mutateFunction({variables: { addTeamToTournamentId: selectedTournament, input: {teamID: selectedTeam} }}); 
-        
+        mutateFunction({variables: { addTeamToTournamentId: selectedTournament, input: {teamID: selectedTeam} }});   
     }
 
     if (loading) return <Loading/>

@@ -4,7 +4,7 @@ import { stringToDate } from '../../utility/date';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import Loading from '../general/Loading';
-import { DELETE_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation';
+import { DELETE_TOURNAMENT, GET_TOURNAMENT_LIST } from '../../../graphql/mutations/tournamentMutation';
 import { GET_TOURNAMENTS } from '../../../graphql/query';
 import { hasAccessVar } from '../../client/cache';
 
@@ -20,7 +20,7 @@ const TournamentTable:React.FC<Props> = ({tournaments, seeTournament}): JSX.Elem
 
 
   const [mutateFunction, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(DELETE_TOURNAMENT, {
-    refetchQueries: [GET_TOURNAMENTS]
+    refetchQueries: [GET_TOURNAMENT_LIST]
   });
   if (mutationLoading) return <>'Submitting...' <Loading/></>;
   if (mutationError) return <>`Submission error! ${mutationError.message}`</>;

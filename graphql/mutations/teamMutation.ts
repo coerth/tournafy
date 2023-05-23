@@ -18,3 +18,11 @@ import { gql } from '@apollo/client';
   mutation Mutation($deleteTeamId: ID!) {
     deleteTeam(id: $deleteTeamId)
   }`
+
+  export const UPDATE_TEAM = gql `
+  mutation UpdateTeam($updateTeamId: ID!, $input: TeamInput!) {
+    updateTeam(id: $updateTeamId, input: $input) {
+      _id
+      name
+    }
+  }`

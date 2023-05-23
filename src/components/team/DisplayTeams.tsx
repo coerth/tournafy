@@ -23,7 +23,7 @@ const DisplayTeams = () => {
     const [getData, {loading: teamLoading, error: teamError}]  = useLazyQuery(GET_TEAM_DETAILED, {
       onCompleted(data) {
         setTeam(data.team)
-        setShowTeam(!showTeam)
+        setShowTeam(true)
       },
     });
 
