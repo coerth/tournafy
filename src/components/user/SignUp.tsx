@@ -95,7 +95,7 @@ const SignUp = () => {
        
           <input
             required
-            type="text"
+            type="password"
             name="password"
             className="input"
             value={user.password}
@@ -111,7 +111,7 @@ const SignUp = () => {
         
           <input
             required
-            type="text"
+            type="password"
             name="confirmPassword"
             className="input"
             value={user.confirmPassword}

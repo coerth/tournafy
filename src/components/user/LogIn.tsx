@@ -49,7 +49,7 @@ const LogIn = () => {
           />
 
           <input
-            type="text"
+            type="password"
             name="password"
             placeholder="Password"
             value={logIn.password}

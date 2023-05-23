@@ -47,6 +47,14 @@
   width: 200px; /* adjust as needed (as long as it doesn't break the topnav) */
 }
 
+.topnav input[type="password"] {
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 15px;
+  font-size: 17px;
+  width: 200px; /* adjust as needed (as long as it doesn't break the topnav) */
+}
+
 /* Style the button inside the input container */
 .topnav .login-container button {
   float: right;
