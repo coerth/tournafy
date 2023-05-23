@@ -27,6 +27,13 @@ const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Elem
 
         return "team"
     }
+
+    const checkScore = (score: number) => {
+      if(score == undefined){
+        return 0
+      }
+      return score
+    }
       
     return (
         <div onClick={toggle} className="match" key={match._id}>
@@ -34,8 +41,16 @@ const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Elem
             hasAccessVar() &&
             <Modal isOpen={isOpen} toggle={toggle} children={ <EditMatch  match={match} advanceTeamToNextStage={advanceTeamToNextStage} />} />
             }
-            <div className={checkUndefinedAndWinner(match.teams![0])}>{match.teams![0] ? match.teams![0].name : "-"} {match.teams![0] ? match.score![0] : "0"}</div>
-            <div className={checkUndefinedAndWinner(match.teams![1])}>{match.teams![1] ? match.teams![1].name : "-"} {match.teams![1] ? match.score![1] : "0"}</div>
+            <div className={checkUndefinedAndWinner(match.teams![0])}>
+              <p className='alignleft'>{match.teams![0] ? match.teams![0].name : "-"} </p>
+              <p className='alignright'>{match.teams![0] ? checkScore(match.score![0]) : 0}</p>
+              <div className='clear'></div>
+            </div>
+            <div className={checkUndefinedAndWinner(match.teams![1])}>
+              <p className='alignleft'>{match.teams![1] ? match.teams![1].name : "-"} </p>
+              <p className='alignright'>{match.teams![1] ? checkScore(match.score![1]) : 0}</p>
+              <div className='clear'></div>
+            </div>
         </div>
         )
 }

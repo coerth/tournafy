@@ -39,6 +39,17 @@ body {
 	border-style: solid;
 }
 
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
 .teamWinner{
 	color: #fff;
 	padding: 10px 8px;
