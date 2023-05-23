@@ -1,5 +1,5 @@
 import React from 'react'
-import { Match } from '../../types/types'
+import { Match, Team } from '../../types/types'
 import Modal from "../general/Modal";
 import useModal from "../../hooks/useModal";
 import { EditMatch } from '../match/EditMatch';
@@ -13,6 +13,20 @@ type Props = {
 
 const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Element => {
     const { isOpen, toggle} = useModal();
+
+    const checkUndefinedAndWinner =(team: Team) => {
+        if(team == undefined)
+        {
+            return "team"
+        }
+        
+        if(team.name === match.winner?.name)
+        {
+            return "teamWinner"
+        }
+
+        return "team"
+    }
 
     // if (!match.teams || !match.teams[0] || !match.teams[1]) {
     //     return (
@@ -33,8 +47,8 @@ const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Elem
             hasAccessVar() &&
             <Modal isOpen={isOpen} toggle={toggle} children={ <EditMatch  match={match} advanceTeamToNextStage={advanceTeamToNextStage} />} />
             }
-            <div className={match.teams[0].name === match.winner?.name ? "teamWinner" : "team" }>{match.teams![0] ? match.teams![0].name : "Stage not active"}</div>
-            <div className={match.teams[1].name === match.winner?.name ? "teamWinner" : "team" }>{match.teams![1] ? match.teams![1].name : "Stage not active"}</div>
+            <div className={checkUndefinedAndWinner(match.teams![0])}>{match.teams![0] ? match.teams![0].name : "Stage not active"}</div>
+            <div className={checkUndefinedAndWinner(match.teams![1])}>{match.teams![1] ? match.teams![1].name : "Stage not active"}</div>
         </div>
         )
 }
