@@ -38,3 +38,8 @@ import { gql } from '@apollo/client';
       tournamentType
     }
   }`
+
+  export const DELETE_TOURNAMENT = gql `
+  mutation DeleteTournament($deleteTournamentId: ID!) {
+    deleteTournament(id: $deleteTournamentId)
+  }`

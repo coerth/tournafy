@@ -1,6 +1,7 @@
 import React from 'react'
 import { Match } from '../../types/types'
 import MatchBracket from "./MatchBracket";
+import { hasAccessVar } from '../../client/cache';
 
 
 type Props = {
@@ -19,7 +20,10 @@ const StageBracket:React.FC<Props> = ({matches, stage, advanceTeamToNextStage}):
             
         })}
 
+        {
+        hasAccessVar() &&
         <button className='bracket-button' onClick={() => advanceTeamToNextStage(matches, stage)}>Next Stage</button>
+        }
       </div>
   )
 }

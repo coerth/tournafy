@@ -23,16 +23,16 @@ const AddTeam = () => {
   return (
     <div>
         <form onSubmit={createNewTeam}>
-          <h1>Add Team</h1>
-        <br/>
-        <label>
+        <h1>Add Team</h1>
+        <h4>Name</h4>
         <input required type="text" name="name" placeholder='name' value={team.name} onChange={(evt)=>{setTeam({...team, name:evt.target.value})}}/>
-        </label>
+        
         <br/>
-        <label>
+        <h4>Captain</h4>
         <input required type="text" name="captain" placeholder='captain id' value={team.captain} onChange={(evt)=>{setTeam({...team, captain:evt.target.value})}}/>
-        </label>
+
         <br/>
+        <br />
         <input type="submit" value="Add new Team" />
     </form>
     </div>

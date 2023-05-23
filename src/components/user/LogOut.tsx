@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { isLoggedInVar, loggedInPlayerVar } from "../../client/cache";
+import { hasAccessVar, isLoggedInVar, loggedInPlayerVar } from "../../client/cache";
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -8,8 +8,10 @@ const Logout = () => {
   const handleLogout = () => {
     localStorage.removeItem("auth:token");
     localStorage.removeItem("player");
+    localStorage.removeItem("adminAccess")
     isLoggedInVar(false);
     loggedInPlayerVar(null);
+    hasAccessVar(false);
     navigate("/");
   };
 

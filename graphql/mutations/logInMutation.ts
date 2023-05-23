@@ -11,6 +11,7 @@ import { gql } from '@apollo/client';
         phone
       }
       token
+      adminAccess
     }
   }
   `

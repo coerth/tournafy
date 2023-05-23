@@ -1,6 +1,12 @@
 import {Tournament} from '../../types/types'
 import { useNavigate } from 'react-router-dom'
 import { stringToDate } from '../../utility/date';
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import Loading from '../general/Loading';
+import { DELETE_TOURNAMENT } from '../../../graphql/mutations/tournamentMutation';
+import { GET_TOURNAMENTS } from '../../../graphql/query';
+import { hasAccessVar } from '../../client/cache';
 
 
 type Props = {
@@ -10,8 +16,20 @@ type Props = {
 const TournamentTable:React.FC<Props> = ({tournaments, seeTournament}): JSX.Element => {
     const navigate = useNavigate();
 
+    const [ID, setID] = useState("")
 
-  
+
+  const [mutateFunction, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(DELETE_TOURNAMENT, {
+    refetchQueries: [GET_TOURNAMENTS]
+  });
+  if (mutationLoading) return <>'Submitting...' <Loading/></>;
+  if (mutationError) return <>`Submission error! ${mutationError.message}`</>;
+
+const deleteTournament = (tournamentId: string) => {
+    console.log(tournamentId);
+    setID(tournamentId);
+    mutateFunction({variables: { deleteTournamentId: tournamentId }}); 
+}  
 
   return (
     <div className='outer-table'>
@@ -39,6 +57,10 @@ const TournamentTable:React.FC<Props> = ({tournaments, seeTournament}): JSX.Elem
               <td>{ stringToDate(tournament.startDate ? tournament.startDate : "")}</td>
               <td>{stringToDate(tournament.endDate ? tournament.endDate : "")}</td>
               <td><button onClick={() => seeTournament(tournament._id? tournament._id : "")}>See Tournament</button></td>
+              {
+                hasAccessVar() &&
+              <td><button onClick={() => deleteTournament(tournament._id!)}>Delete</button></td>
+              }
 
             </tr>
         )

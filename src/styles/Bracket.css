@@ -9,6 +9,7 @@ body {
 	display: flex;
 
 	justify-content: center;
+	margin-bottom: 5%;
 }
 
 
@@ -47,7 +48,7 @@ body {
 .bracket-button{
 	width: 303px;
 	align-self: center;
-	margin-bottom: 20%;
+
 }
 
 .team:nth-child(odd) {

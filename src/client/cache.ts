@@ -14,6 +14,11 @@ export const cache = new InMemoryCache({
                 return loggedInPlayerVar();
               },
             },
+            hasAcces: {
+              read() {
+                return hasAccessVar()
+              }
+            }
 }
 }
 }
@@ -22,3 +27,4 @@ export const cache = new InMemoryCache({
 
 export const isLoggedInVar = makeVar(!!localStorage.getItem("auth:token"))
 export const loggedInPlayerVar = makeVar(localStorage.getItem("player"))
+export const hasAccessVar = makeVar(false)

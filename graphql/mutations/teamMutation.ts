@@ -13,3 +13,8 @@ import { gql } from '@apollo/client';
       _id
     }
   }`
+
+  export const DELETE_TEAM = gql `
+  mutation Mutation($deleteTeamId: ID!) {
+    deleteTeam(id: $deleteTeamId)
+  }`

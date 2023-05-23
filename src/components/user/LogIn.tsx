@@ -6,7 +6,7 @@ import Modal from "../general/Modal";
 import useModal from "../../hooks/useModal";
 import SignUp from "./SignUp";
 import "../../styles/Modal.css";
-import { isLoggedInVar, loggedInPlayerVar } from "../../client/cache";
+import { isLoggedInVar, loggedInPlayerVar, hasAccessVar } from "../../client/cache";
 
 const LogIn = () => {
   const { isOpen, toggle } = useModal();
@@ -19,8 +19,10 @@ const LogIn = () => {
   if (data && data.sign_in.token && data.sign_in.player) {
     localStorage.setItem("auth:token", data.sign_in.token);
     localStorage.setItem("player", JSON.stringify(data.sign_in.player));
+    hasAccessVar(data.sign_in.adminAccess)
     isLoggedInVar(true);
     loggedInPlayerVar(data.sign_in.player);
+    console.log(hasAccessVar())
   }
 
   const signIn = (event: React.FormEvent<HTMLFormElement>) => {
