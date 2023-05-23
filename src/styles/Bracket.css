@@ -7,16 +7,13 @@ body {
 
 .bracket {
 	display: flex;
-
 	justify-content: center;
 	margin-bottom: 5%;
 }
 
-
 .stage {
 	display: flex;
 	margin-right: 30px;
-	
 	flex-direction: column;
 	justify-content: space-around;
 }

@@ -3,6 +3,7 @@ import '../../styles/App.css'
 import {Tournament} from '../../types/types'
 import TournamentBracket from '../bracket/TournamentBracket'
 import DisplayMatches from '../match/DisplayMatches'
+import { stringToDate } from '../../utility/date'
 
 
 type Props = {
@@ -25,7 +26,7 @@ const DisplayTournament:React.FC<Props> = ({tournament, setShowTournament}): JSX
         <h1 className="h1-tournament">{tournament.name}</h1>
         <TournamentBracket matches={tournament.matches!}/>
         <DisplayMatches matches={tournament.matches} returnButton={returnToTournaments}/>
-        
+      
     </div>
   )
 }

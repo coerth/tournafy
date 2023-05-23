@@ -6,11 +6,7 @@ import {LOGGED_IN_PLAYER } from '../../graphql/query';
 const FrontPage = () => {
   const navigate = useNavigate();
 
-  let player = localStorage.getItem("player");
-
   const {data} = useQuery(LOGGED_IN_PLAYER);
-  if(player) console.log(JSON.parse(player? player : ""));
-
 
   return (
     <div>
