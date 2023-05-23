@@ -14,7 +14,7 @@ type EditMatchProps = {
 };
 
 export const EditMatch: React.FC<EditMatchProps> = ({ match, advanceTeamToNextStage }) => {
-  const [updateMatch, setUpdateMatch] = useState(matchInput);
+  const [updateMatch, setUpdateMatch] = useState({...matchInput, winner: match.teams![0] ? match.teams![0]._id : matchInput.winner});
 
   
   const [mutateFunction, {
