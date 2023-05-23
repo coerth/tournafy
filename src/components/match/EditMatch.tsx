@@ -8,10 +8,11 @@ import { Match } from '../../types/types';
 import Loading from '../general/Loading';
 
 type EditMatchProps = {
-  match: Match
+  match: Match,
+  advanceTeamToNextStage: Function
 };
 
-export const EditMatch: React.FC<EditMatchProps> = ({ match }) => {
+export const EditMatch: React.FC<EditMatchProps> = ({ match, advanceTeamToNextStage }) => {
   const [updateMatch, setUpdateMatch] = useState({winner: match.teams![0]._id,
     teamAScore: match.score!.length > 0 ? 0 : match.score![0], teamBScore: match.score!.length > 0 ? 0 : match.score![0]});
 
@@ -20,7 +21,12 @@ export const EditMatch: React.FC<EditMatchProps> = ({ match }) => {
     loading: mutationLoding,
     error: mutationError,
     data: mutationData } ] = useMutation(UPDATE_MATCH,{
-    refetchQueries: [GET_TOURNAMENTS, GET_MATCHES]
+    refetchQueries: [GET_TOURNAMENTS, GET_MATCHES],
+
+    onCompleted(data) {
+
+      advanceTeamToNextStage(data.updateMatch, data.updateMatch.stage)
+    },
 });
 
  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -41,7 +47,6 @@ export const EditMatch: React.FC<EditMatchProps> = ({ match }) => {
 
   if (mutationLoding) return <>'Submitting...' <Loading/></>;
   if (mutationError) return <>`Submission error! ${mutationError.message}`</>;
-  if ( mutationData) console.log(mutationData)
 
   return (
     <div className='modal-outer-div'>

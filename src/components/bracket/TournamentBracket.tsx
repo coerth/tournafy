@@ -7,30 +7,31 @@ import { bracketInitialState } from "../../types/initialState";
 import StageBracket from ".//StageBracket";
 import { UPDATE_MATCH } from "../../../graphql/mutations/matchMutation";
 import '../../styles/Bracket.css'
+import Loading from "../general/Loading";
 
 type Props = {
-  matches: Match[] | undefined;
+  matches: Match[];
   returnButton: Function
 };
 
 const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element => {
   const [bracket, setBracket] = useState(bracketInitialState)
 
-  useEffect(() => {
-  if(matches)
-  {
-
-  convertMatchesToHashMap(matches)
-  }
-
-  }, [matches])
-
   const [mutateFunction, {
-    loading: mutationLoding,
+    loading: mutationLoading,
     error: mutationError,
     data: mutationData } ] = useMutation(UPDATE_MATCH,{
     refetchQueries: [GET_TOURNAMENTS, GET_MATCHES]
 });
+  useEffect(() => {
+    
+  if(matches)
+  {
+  convertMatchesToHashMap(matches)
+  }
+
+  }, [matches, mutationData])
+
 
    function convertMatchesToHashMap(matches: Match[]) {
       let newBracket = new Map<number, Match[]>()
@@ -51,31 +52,33 @@ const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element
      setBracket(newBracket)
    }  
 
-   function advanceTeamToNextStage (matches: Match[], stage: number) {
-    let winnerArray = [];
+   function advanceTeamToNextStage (match: Match, stage: number) {
 
-    for(const match of matches){
-      winnerArray.push(match.winner)
-    }
+    let teamPlaced = false
 
     if(stage != 1){
       let nextStageMatches = bracket.get(stage-1);
-      if(nextStageMatches){
-      for(let match of nextStageMatches!){
-        if(match.teams?.length != 2){
+      for(let nextMatch of nextStageMatches!){
+        if(teamPlaced == false && nextMatch.teams?.length != 2){
+          
+          let teamIdArray: string[] = []
+          nextMatch.teams?.forEach(team => teamIdArray.push(team._id!))
+          teamIdArray.push(match.winner?._id!)
+
           mutateFunction({
             variables: {
-              updateMatchId: match._id,
-              input: {location: match.location ? match.location : "", stage: match.stage, teams: [winnerArray[0]!._id, winnerArray[1]!._id]}
+              updateMatchId: nextMatch._id,
+              input: {location: nextMatch.location ? nextMatch.location : "", stage: nextMatch.stage, teams: teamIdArray}
             },
           });
-          winnerArray.splice(0,2)
-        }
+
+          teamPlaced = true
       }
     }
   }
   }
 
+if(mutationLoading) return <Loading/>
 
   return (
     <div className="outer-bracket-div">
@@ -87,7 +90,6 @@ const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element
     <div className="bracket">
 
       {[...bracket.keys()].map( key => {
-        console.log(key)
      return  <StageBracket stage={key} matches={bracket.get(key) ? bracket.get(key) : []} advanceTeamToNextStage={advanceTeamToNextStage} />
       })
       }

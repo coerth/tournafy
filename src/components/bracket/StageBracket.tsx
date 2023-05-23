@@ -11,19 +11,13 @@ type Props = {
   };
 
 const StageBracket:React.FC<Props> = ({matches, stage, advanceTeamToNextStage}): JSX.Element => {
-  console.log(stage)
   return (
     <div className="stage" key={stage}>
         {matches?.map((match: Match) => {
             
-              return <MatchBracket match={match}/>
+              return <MatchBracket match={match} advanceTeamToNextStage={advanceTeamToNextStage}/>
             
         })}
-
-        {
-        hasAccessVar() &&
-        <button className='bracket-button' onClick={() => advanceTeamToNextStage(matches, stage)}>Next Stage</button>
-        }
       </div>
   )
 }
