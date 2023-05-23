@@ -1,7 +1,6 @@
 import React from 'react'
 import { Match } from '../../types/types'
 import MatchBracket from "./MatchBracket";
-import { hasAccessVar } from '../../client/cache';
 
 
 type Props = {

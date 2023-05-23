@@ -25,6 +25,12 @@ export const matchInitialState: Match = {
     teams: [teamInitialState]
 }
 
+export const matchInput = {
+    winner: "",
+    teamAScore: 0,
+    teamBScore: 0
+}
+
 export const tournamentInitialState: Tournament = {
     name: "",
     startDate: dateFormatForm(new Date()),
