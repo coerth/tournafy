@@ -9,9 +9,10 @@ import Loading from '../general/Loading';
 
 type Props = {
   matches: Match[] | undefined;
+  returnButton: Function
 };
 
-const DisplayMatches :React.FC<Props> = ({matches}): JSX.Element => {
+const DisplayMatches :React.FC<Props> = ({matches, returnButton}): JSX.Element => {
   const navigate = useNavigate();
 
   const { loading, error, data } = useQuery(GET_MATCHES);
@@ -44,13 +45,13 @@ const DisplayMatches :React.FC<Props> = ({matches}): JSX.Element => {
             <tr key={match._id}>
               <td>{match.score![0]} - {match.score![1]}</td>
               <td>{match.teams![0]?.name} - {match.teams![1]?.name}</td>
-              {/* <td><button onClick={() => seeMatch(match._id? match._id : "")}>See Match</button></td> */}
             </tr>
         ))}
             </tbody>
         </table>
-        {/* <button onClick={()=>navigate(-1)}>Return</button> */}
-
+        <div className='table-button' >
+        <button onClick={() =>returnButton()}>Return</button>
+        </div>
         </div>
 }
 

@@ -36,6 +36,12 @@ body {
 	background-color: #0c5b66;
 }
 
+.teamWinner{
+	color: #fff;
+	padding: 10px 8px;
+	background-color: #48c09a;
+}
+
 .return-button{
 	margin: 0;
   position: absolute;

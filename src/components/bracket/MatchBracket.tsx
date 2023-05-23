@@ -14,18 +14,18 @@ type Props = {
 const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Element => {
     const { isOpen, toggle} = useModal();
 
-    if (!match.teams || !match.teams[0] || !match.teams[1]) {
-        return (
-          <div className="match" key={match._id}>
-            <div className="team">
-              {match.teams && match.teams[0] ? match.teams[0].name : "Stage not active"}
-            </div>
-            <div className="team">
-              {match.teams && match.teams[1] ? match.teams[1].name : "Stage not active"}
-            </div>
-          </div>
-        );
-      }
+    // if (!match.teams || !match.teams[0] || !match.teams[1]) {
+    //     return (
+    //       <div className="match" key={match._id}>
+    //         <div className="team">
+    //           {match.teams && match.teams[0] ? match.teams[0].name : "Stage not active"}
+    //         </div>
+    //         <div className="team">
+    //           {match.teams && match.teams[1] ? match.teams[1].name : "Stage not active"}
+    //         </div>
+    //       </div>
+    //     );
+    //   }
       
     return (
         <div onClick={toggle} className="match" key={match._id}>
@@ -33,8 +33,8 @@ const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Elem
             hasAccessVar() &&
             <Modal isOpen={isOpen} toggle={toggle} children={ <EditMatch  match={match} advanceTeamToNextStage={advanceTeamToNextStage} />} />
             }
-            <div className="team">{match.teams![0] ? match.teams![0].name : "Stage not active"}</div>
-            <div className="team">{match.teams![1] ? match.teams![1].name : "Stage not active"}</div>
+            <div className={match.teams[0].name === match.winner?.name ? "teamWinner" : "team" }>{match.teams![0] ? match.teams![0].name : "Stage not active"}</div>
+            <div className={match.teams[1].name === match.winner?.name ? "teamWinner" : "team" }>{match.teams![1] ? match.teams![1].name : "Stage not active"}</div>
         </div>
         )
 }

@@ -7,12 +7,14 @@ import { teamInitialState } from '../../types/initialState';
 import { useNavigate } from 'react-router-dom'
 import Loading from '../general/Loading';
 import { DELETE_TEAM } from '../../../graphql/mutations/teamMutation';
-import { hasAccessVar } from '../../client/cache';
 import {GET_TEAMS_LIST, GET_TEAM_DETAILED} from '../../../graphql/query'
+import { TeamTable } from './TeamTable';
 
 const DisplayTeams = () => {
   const navigate = useNavigate();
   const [ID, setID] = useState("")
+  const[filter, setFilter] = useState(false)
+  const[selectedFilter, setSelectedFilter] = useState("")
 
   const { loading, error, data } = useQuery(GET_TEAMS_LIST);
   const [team, setTeam] = useState<Team>(teamInitialState)
@@ -32,6 +34,19 @@ const DisplayTeams = () => {
 function seeTeam(id: string) {
     getData({ variables: {teamId: id}})
     
+  }
+
+  const onFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault()
+    let filter = event.target.value
+    if(filter === "")
+    {
+      setFilter(false)
+    }
+    else{
+      setFilter(true)
+    }
+    setSelectedFilter(filter.toLocaleLowerCase())
   }
   
   const [mutateFunction, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(DELETE_TEAM, {refetchQueries: [GET_TEAMS_LIST]});
@@ -53,28 +68,9 @@ const deleteTeam = (teamId: string) => {
     <div className='select-tournament'>
     {!showTeam &&
     <div>
-        <table>
-            <thead>
-                <tr>
-
-                    <th>Name</th>
-
-                </tr>
-            </thead>
-            <tbody>
-            {data.teams.map( (team:Team ) => (
-            <tr key={team._id}>
-              <td>{team.name}</td>
-              <td><button onClick={() => seeTeam(team._id? team._id : "")}>See Team</button></td>
-              {
-               hasAccessVar() && 
-              <td><button onClick={() => deleteTeam(team._id!)}>Delete</button></td>
-              }
-            </tr>
-        ))}
-            </tbody>
-        </table>
-        <button onClick={()=>navigate(-1)}>Return</button>
+      <input className='searchbar' onChange={onFilterChange} type="text" placeholder='Search'/>
+        
+        <TeamTable teams={filter ? data.teams.filter((t: Team): t is Team => t.name.toLocaleLowerCase().startsWith(selectedFilter )) : data.teams } deleteTeam={deleteTeam} seeTeam={seeTeam} />
         
         </div>
 }

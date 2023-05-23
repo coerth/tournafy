@@ -22,6 +22,7 @@ export const EditMatch: React.FC<EditMatchProps> = ({ match, advanceTeamToNextSt
     error: mutationError,
     data: mutationData } ] = useMutation(UPDATE_MATCH,{
     refetchQueries: [GET_TOURNAMENTS, GET_MATCHES],
+
     onCompleted(data) {
 
       advanceTeamToNextStage(data.updateMatch, data.updateMatch.stage)
@@ -57,11 +58,11 @@ export const EditMatch: React.FC<EditMatchProps> = ({ match, advanceTeamToNextSt
         <Dropdown array={match.teams!} onChange={handleSelectChange}  />
         <br />
 
-        <h3 className='h-modal'>{match.teams![0].name} Score</h3>
+        <h3 className='h-modal'>{match.teams![0].name ? match.teams![0].name : "-"} Score</h3>
         <input type="text" value={updateMatch.teamAScore} onChange={(evt) => {setUpdateMatch({...updateMatch, teamAScore: parseInt(evt.target.value)})}} />
 
         <br />
-        <h3 className='h-modal'>{match.teams![1].name} Score</h3>
+        <h3 className='h-modal'>{match.teams![1].name ? match.teams![1].name : "-"} Score</h3>
         <input type="text" value={updateMatch.teamBScore} onChange={(evt) => {setUpdateMatch({...updateMatch, teamBScore: parseInt(evt.target.value)})}} />
         <br />
         <br />

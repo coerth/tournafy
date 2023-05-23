@@ -43,7 +43,6 @@ if(location.state)
   const onFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault()
     let filter = event.target.value
-    console.log(filter)
     if(filter === "All")
     {
       setFilter(false)
