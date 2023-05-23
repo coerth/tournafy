@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import {Tournament} from '../../types/types'
 import { GET_TOURNAMENTS } from '../../../graphql/query';
-import { useQuery} from '@apollo/client';
+import { useLazyQuery, useQuery} from '@apollo/client';
 import DisplayTournament from './DisplayTournament';
 import TournamentTable from './TournamentTable';
 import { tournamentGameTypes, tournamentInitialState } from '../../types/initialState';
 import {useLocation} from 'react-router-dom';
 import Loading from '../general/Loading';
-
-
-
+import { GET_TOURNAMENT_DETAILED, GET_TOURNAMENT_LIST } from '../../../graphql/mutations/tournamentMutation';
 
 const DisplayTournaments = () => {
   const[filter, setFilter] = useState(false)
@@ -18,25 +16,25 @@ const DisplayTournaments = () => {
   const [showTournament, setShowTournament] = useState(false)
   const location = useLocation()
   
+  const [getData, {loading: teamLoading, error: teamError}]  = useLazyQuery(GET_TOURNAMENT_DETAILED, {
+    onCompleted(data) {
+      setTournament(data.tournament)
+      setShowTournament(true)
+    },
+  });
+  
   useEffect(() => {
-
 if(location.state)
 {
   setSelectedFilter(location.state.game)
   setFilter(true)
 }
-
-
   }, [location])
   
-  
-  
-  const { loading, error, data } = useQuery(GET_TOURNAMENTS);
+  const { loading, error, data } = useQuery(GET_TOURNAMENT_LIST);
 
   function seeTournament(id: string) {
-    let index = data.tournaments?.findIndex((tournament: Tournament) => tournament._id === id)
-    setTournament(data.tournaments[index])
-    setShowTournament(!showTournament) 
+    getData({variables: {tournamentId: id}})
   }
 
   if (loading) return <Loading/>

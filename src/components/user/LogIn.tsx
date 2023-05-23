@@ -30,7 +30,8 @@ const LogIn = () => {
   if (data && data.sign_in.token && data.sign_in.player) {
     localStorage.setItem("auth:token", data.sign_in.token);
     localStorage.setItem("player", JSON.stringify(data.sign_in.player));
-    hasAccessVar(data.sign_in.adminAccess)
+    localStorage.setItem("adminAccess", data.sign_in.adminAccess);
+    //hasAccessVar(data.sign_in.adminAccess)
     isLoggedInVar(true);
     loggedInPlayerVar(data.sign_in.player);
     console.log(hasAccessVar())

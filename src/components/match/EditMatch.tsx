@@ -22,7 +22,6 @@ export const EditMatch: React.FC<EditMatchProps> = ({ match, advanceTeamToNextSt
     error: mutationError,
     data: mutationData } ] = useMutation(UPDATE_MATCH,{
     refetchQueries: [GET_TOURNAMENTS, GET_MATCHES],
-
     onCompleted(data) {
 
       advanceTeamToNextStage(data.updateMatch, data.updateMatch.stage)

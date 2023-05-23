@@ -27,4 +27,4 @@ export const cache = new InMemoryCache({
 
 export const isLoggedInVar = makeVar(!!localStorage.getItem("auth:token"))
 export const loggedInPlayerVar = makeVar(localStorage.getItem("player"))
-export const hasAccessVar = makeVar(false)
+export const hasAccessVar = makeVar(localStorage.getItem("adminAccess") === "true" ? true : false)

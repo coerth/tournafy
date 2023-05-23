@@ -20,9 +20,7 @@ const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element
   const [mutateFunction, {
     loading: mutationLoading,
     error: mutationError,
-    data: mutationData } ] = useMutation(UPDATE_MATCH,{
-    refetchQueries: [GET_TOURNAMENTS, GET_MATCHES]
-});
+    data: mutationData } ] = useMutation(UPDATE_MATCH);
   useEffect(() => {
     
   if(matches)

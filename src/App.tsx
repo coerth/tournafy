@@ -7,6 +7,7 @@ import FrontPage from './components/FrontPage'
 import Adminpage from './components/admin/Adminpage'
 import { ADMIN_ACCESS } from '../graphql/query'
 import { useQuery } from "@apollo/client";
+import { hasAccessVar } from './client/cache'
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       <Routes>
       <Route path='/' element={<FrontPage/>} />
       <Route path="/team" element={<DisplayTeams />} />
-      <Route path="/admin"  element={data.hasAccess === true ? <Adminpage/> : <Navigate to="/" replace={true} />}/>
+      <Route path="/admin"  element={data.adminAccess ? <Adminpage/> : <Navigate to="/" replace={true} />}/>
       <Route path="/tournament" element={<DisplayTournament />} />
       <Route path="*" element={<Navigate to="/" replace={true} />}
     />
