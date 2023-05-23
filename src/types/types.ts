@@ -13,6 +13,7 @@ export type Team = {
     name: string,
     captain: Player,
     players?: Player[]
+    tournaments?: Tournament[]
 }
 
 export type Match = {
