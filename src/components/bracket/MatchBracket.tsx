@@ -27,19 +27,6 @@ const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Elem
 
         return "team"
     }
-
-    // if (!match.teams || !match.teams[0] || !match.teams[1]) {
-    //     return (
-    //       <div className="match" key={match._id}>
-    //         <div className="team">
-    //           {match.teams && match.teams[0] ? match.teams[0].name : "Stage not active"}
-    //         </div>
-    //         <div className="team">
-    //           {match.teams && match.teams[1] ? match.teams[1].name : "Stage not active"}
-    //         </div>
-    //       </div>
-    //     );
-    //   }
       
     return (
         <div onClick={toggle} className="match" key={match._id}>
@@ -47,9 +34,8 @@ const MatchBracket:React.FC<Props> = ({match, advanceTeamToNextStage}): JSX.Elem
             hasAccessVar() &&
             <Modal isOpen={isOpen} toggle={toggle} children={ <EditMatch  match={match} advanceTeamToNextStage={advanceTeamToNextStage} />} />
             }
-            <div className={checkUndefinedAndWinner(match.teams![0])}>{match.teams![0] ? match.teams![0].name : "Stage not active"}</div>
-            <div className={checkUndefinedAndWinner(match.teams![1])}>{match.teams![1] ? match.teams![1].name : "Stage not active"}</div>
-
+            <div className={checkUndefinedAndWinner(match.teams![0])}>{match.teams![0] ? match.teams![0].name : "-"}</div>
+            <div className={checkUndefinedAndWinner(match.teams![1])}>{match.teams![1] ? match.teams![1].name : "-"}</div>
         </div>
         )
 }

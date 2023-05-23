@@ -11,10 +11,9 @@ import Loading from "../general/Loading";
 
 type Props = {
   matches: Match[];
-  returnButton: Function
 };
 
-const TournamentBracket:React.FC<Props> = ({matches, returnButton}): JSX.Element => {
+const TournamentBracket:React.FC<Props> = ({matches}): JSX.Element => {
   const [bracket, setBracket] = useState(bracketInitialState)
 
   const [mutateFunction, {
@@ -82,6 +81,7 @@ if(mutationLoading) return <Loading/>
     <div className="outer-bracket-div">
       {!matches || matches.length == 0 &&
        <p>No Bracket yet...</p>
+       
        }
 
     { matches!.length > 0 &&

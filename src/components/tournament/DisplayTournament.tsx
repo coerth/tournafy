@@ -22,7 +22,8 @@ const DisplayTournament:React.FC<Props> = ({tournament, setShowTournament}): JSX
 
     return (
     <div>
-        <TournamentBracket matches={tournament.matches!} returnButton={returnToTournaments}/>
+        <h1 className="h1-tournament">{tournament.name}</h1>
+        <TournamentBracket matches={tournament.matches!}/>
         <DisplayMatches matches={tournament.matches} returnButton={returnToTournaments}/>
         
     </div>

@@ -6,6 +6,7 @@ import Dropdown from '../general/Dropdown';
 import '../../styles/Modal.css'
 import { Match } from '../../types/types';
 import Loading from '../general/Loading';
+import { matchInput } from '../../types/initialState';
 
 type EditMatchProps = {
   match: Match,
@@ -13,8 +14,7 @@ type EditMatchProps = {
 };
 
 export const EditMatch: React.FC<EditMatchProps> = ({ match, advanceTeamToNextStage }) => {
-  const [updateMatch, setUpdateMatch] = useState({winner: match.teams![0]._id,
-    teamAScore: match.score!.length > 0 ? 0 : match.score![0], teamBScore: match.score!.length > 0 ? 0 : match.score![0]});
+  const [updateMatch, setUpdateMatch] = useState(matchInput);
 
   
   const [mutateFunction, {
@@ -58,12 +58,21 @@ export const EditMatch: React.FC<EditMatchProps> = ({ match, advanceTeamToNextSt
         <Dropdown array={match.teams!} onChange={handleSelectChange}  />
         <br />
 
-        <h3 className='h-modal'>{match.teams![0].name ? match.teams![0].name : "-"} Score</h3>
-        <input type="text" value={updateMatch.teamAScore} onChange={(evt) => {setUpdateMatch({...updateMatch, teamAScore: parseInt(evt.target.value)})}} />
+        {match.teams![0] && 
+        <div>
+          <h3 className='h-modal'>{match.teams![0].name ? match.teams![0].name : "-"} Score</h3>
+          <input type="text" value={updateMatch.teamAScore} onChange={(evt) => {setUpdateMatch({...updateMatch, teamAScore: parseInt(evt.target.value)})}} />
+        </div>
+        }
 
         <br />
-        <h3 className='h-modal'>{match.teams![1].name ? match.teams![1].name : "-"} Score</h3>
-        <input type="text" value={updateMatch.teamBScore} onChange={(evt) => {setUpdateMatch({...updateMatch, teamBScore: parseInt(evt.target.value)})}} />
+
+        {match.teams![1] &&
+          <div>
+            <h3 className='h-modal'>{match.teams![1].name ? match.teams![1].name : "-"} Score</h3>
+            <input type="text" value={updateMatch.teamBScore} onChange={(evt) => {setUpdateMatch({...updateMatch, teamBScore: parseInt(evt.target.value)})}} />
+          </div>
+        }
         <br />
         <br />
 
